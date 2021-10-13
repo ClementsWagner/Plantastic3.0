@@ -1,0 +1,58 @@
+name: plantastic
+description: A new Flutter application.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.9.0 <3.0.0"
+
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+
+  json_annotation: ^3.0.1
+  path_provider: ^1.6.11
+  image_picker: ^0.6.7+4
+  shared_preferences: ^0.5.8
+  provider: ^4.0.4
+  permission_handler: ^5.0.1+1
+  uuid: ^2.2.2
+  curved_navigation_bar: ^0.3.4
+  infinity_page_view: ^1.0.0
+  smooth_page_indicator: ^0.2.0
+  liquid_progress_indicator: ^0.3.2
+  charts_flutter: ^0.9.0
+  flushbar: ^1.10.4
+  qr_code_scanner: ^0.0.13
+  openid_client: ^0.3.1
+  url_launcher: ^5.7.10
+  http: ^0.12.1
+  flutter_secure_storage: ^3.3.3
+  universal_html: ^1.2.3
+
+dependency_overrides:
+  intl: ^0.17.0-nullsafety.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  build_runner: ^1.8.1
+  json_serializable: ^3.3.0
+  flutter_native_splash: ^0.1.9
+
+flutter_native_splash:
+  image: "assets/Logo2.png"
+  color: "#ffffff"
+  android_disable_fullscreen: false
+
+
+flutter:
+  uses-material-design: true

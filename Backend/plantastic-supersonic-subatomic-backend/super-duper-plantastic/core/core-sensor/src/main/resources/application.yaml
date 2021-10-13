@@ -1,0 +1,51 @@
+quarkus:
+  # Enable to apply CORS filter
+  http:
+    cors: true
+
+  # Datasource configuration
+
+  datasource:
+    db-kind: postgresql
+    username: sensor
+    password: sensor
+    jdbc:
+      driver: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5432/sensor_database
+      min-size: 5
+      max-size: 12
+
+    # Hibernate ORM configuration
+  hibernate-orm:
+    database:
+      generation: update
+  flyway:
+    migrate-at-start: true
+    baseline-on-migrate: true
+  # Logging configuration
+  log:
+    level: INFO
+    console:
+      enable: true
+      format: "%d{HH:mm:ss} %-5p traceId=%X{traceId}, spanId=%X{spanId}, sampled=%X{sampled} [%c{2.}] (%t) %s%e%n"
+      level: DEBUG
+      color: true
+    category:
+      "org.hibernate":
+        level: WARN
+      "io.quarkus":
+        level: INFO
+#      "org.apache.kafka":
+#        level: ERROR
+at:
+  htl:
+    superduperplantastic:
+      coresensor:
+        service:
+          HomeStationService/mp-rest/url: http://localhost:8081/
+          HomeStationService/mp-rest/scope: javax.inject.Singleton
+
+"%dev":
+  quarkus:
+    http:
+      port: 8084
