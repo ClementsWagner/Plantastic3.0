@@ -1,7 +1,9 @@
-<nav>
-  <ul>
-    <li><a routerLink="/" routerLinkActive="active">First Component</a></li>
-  </ul>
-</nav>
-<!-- The routed views render in the <router-outlet>-->
+<mat-toolbar color="green" class="app-header">
+  <div>Plantastic</div>
+  <span class="nav-tool-items">
+    <a mat-button routerLink="login" routerLinkActive="active">Signin</a>
+    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Signup</a>
+  </span>
+</mat-toolbar>
+
 <router-outlet></router-outlet>

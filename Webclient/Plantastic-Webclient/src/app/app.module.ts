@@ -8,17 +8,25 @@ import { AngularMaterialModule } from "./angular-material.module";
 import { LogInComponent } from './components/log-in/log-in.component';
 import { RegisterComponent } from './components/register/register.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
-    RegisterComponent
+    RegisterComponent,
+  ],
+  entryComponents: [
+    LogInComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+  ],
+  exports: [
+    AppComponent,
+   LogInComponent
   ],
   providers: [],
   bootstrap: [AppComponent],

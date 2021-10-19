@@ -1,0 +1,14 @@
+.centering-div{
+  display: flex;
+  justify-content: center;
+}
+
+.inner-container {
+  width: 80%;
+  max-width: 100%;
+  overflow: auto;
+}
+.my-card {
+  max-width: 100%;
+  color: rgb(63, 81, 181);
+}
