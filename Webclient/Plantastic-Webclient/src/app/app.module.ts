@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from "./angular-material.module";
 import { LogInComponent } from './components/log-in/log-in.component';
 import { RegisterComponent } from './components/register/register.component';
+import { HomeStationComponent } from './components/home-station/home-station.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { RegisterComponent } from './components/register/register.component';
     AppComponent,
     LogInComponent,
     RegisterComponent,
+    HomeStationComponent,
   ],
   entryComponents: [
     LogInComponent
