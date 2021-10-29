@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {ToolbarService} from "../../services/toolbar.service";
+import {UserService} from "../../services/user.service";
 
 
 @Component({
@@ -13,10 +13,11 @@ export class LogInComponent{
   showSpinner: any;
   email: string = "";
 
-  constructor(public toolbarService: ToolbarService) {
+  constructor(public userService: UserService) {
   }
 
   login() {
-    this.toolbarService.hideAuthentication(true)
+    this.userService.email = this.email;
+    this.userService.isAuthenticated = true
   }
 }

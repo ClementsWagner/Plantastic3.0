@@ -10,6 +10,7 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeStationComponent } from './components/home-station/home-station.component';
 import { PlantViewComponent } from './components/plant-view/plant-view.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { PlantViewComponent } from './components/plant-view/plant-view.component
     RegisterComponent,
     HomeStationComponent,
     PlantViewComponent,
+    UserCardComponent,
   ],
   entryComponents: [
     LogInComponent
