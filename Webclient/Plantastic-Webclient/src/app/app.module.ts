@@ -8,6 +8,7 @@ import { AngularMaterialModule } from "./angular-material.module";
 import { LogInComponent } from './components/log-in/log-in.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeStationComponent } from './components/home-station/home-station.component';
+import { PlantViewComponent } from './components/plant-view/plant-view.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { HomeStationComponent } from './components/home-station/home-station.com
     LogInComponent,
     RegisterComponent,
     HomeStationComponent,
+    PlantViewComponent,
   ],
   entryComponents: [
     LogInComponent

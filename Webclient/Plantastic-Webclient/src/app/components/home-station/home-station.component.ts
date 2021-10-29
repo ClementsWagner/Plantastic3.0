@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import {homeStation} from "../../models/home-station";
 
 @Component({
   selector: 'app-home-station',
   templateUrl: './home-station.component.html',
   styleUrls: ['./home-station.component.css']
 })
-export class HomeStationComponent implements OnInit {
+export class HomeStationComponent {
 
-  constructor() { }
+  public homeStations: homeStation[] = [new homeStation("Erdgeschoss", "1e-43-5a-f3"), new homeStation("Obergeschoss", "2c-14-3f-b5")];
 
-  ngOnInit(): void {
+  constructor() {
+
+    this.homeStations[0].active=true;
   }
 
 }
