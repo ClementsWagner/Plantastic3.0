@@ -1,1 +1,30 @@
-<p>plant-view works!</p>
+<div *ngIf="homeStation">
+  <h1 style="text-align: center">{{homeStation.name}}</h1>
+  <ng-template ngFor let-sensor [ngForOf]="sensors">
+    <mat-expansion-panel hideToggle class="plant-card">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="plant-card-title"></mat-panel-title>
+        <mat-icon *ngIf="sensor.status==0" class="good-health">sentiment_very_satisfied</mat-icon>
+        <mat-icon *ngIf="sensor.status==1" class="ok-health">sentiment_satisfied</mat-icon>
+        <mat-icon *ngIf="sensor.status==2" class="bad-health">sentiment_very_dissatisfied</mat-icon>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <mat-form-field appearance="fill">
+          <mat-label>Pflanzentyp</mat-label>
+          <mat-select [(value)]="sensor.plantType">
+            <mat-option *ngFor="let type of plantTypes" [value]="type">
+              {{type}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-template>
+    </mat-expansion-panel>
+  </ng-template>
+</div>
+
+
+<!-- Error message for UI prototype -->
+<div *ngIf="!homeStation">
+  <h2>Es konnte keine Verbindung zum Gerät hergestellt werden</h2>
+  <p>Stellen sie sicher das die Plantastic Homestation korrekt mit dem Internet verbunden wurde.</p>
+</div>

@@ -1,5 +1,5 @@
 <ng-template ngFor let-homeStation [ngForOf]="homeStations">
-  <mat-card class="home-station-card">
+  <mat-card class="home-station-card" [routerLink]="['/HomeStation', homeStation.serialnumber]">
     <mat-card-title>
       {{ homeStation.name }}
       <span *ngIf="homeStation.active" class="active-dot"></span>
