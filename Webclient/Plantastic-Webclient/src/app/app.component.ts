@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ToolbarService} from "./services/toolbar.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Plantastic-Webclient';
+  sidenavOpened: boolean = false;
+
+  constructor(public toolbarService: ToolbarService) {
+  }
+
+  sidenavChangeState() {
+    this.sidenavOpened = !this.sidenavOpened
+  }
 }
