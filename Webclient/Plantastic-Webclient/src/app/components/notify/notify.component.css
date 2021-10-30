@@ -1,0 +1,35 @@
+.stretch-container{
+  flex: auto 1 1;
+}
+
+.notify-card{
+  margin-top: 20px;
+}
+
+.notify-delete-button{
+  float: right;
+}
+.notify-title{
+  text-align: center;
+  font-size: large;
+}
+
+.notify-icon{
+  float: right;
+}
+
+.add-button {
+  width: 100%;
+}
+
+.notify-input {
+  font-size: large;
+  width: 90%;
+  margin-left: 10px;
+  margin-right: 15px;
+}
+
+.notify-input-form {
+  margin-left: 10px;
+  margin-right: 10px;
+}

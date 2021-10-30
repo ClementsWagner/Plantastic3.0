@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {UserService} from "./services/user.service";
+import {SidenavService} from "./services/sidenav.service";
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,8 @@ import {UserService} from "./services/user.service";
 })
 export class AppComponent {
   title = 'Plantastic-Webclient';
-  sidenavOpened: boolean = false;
 
-  constructor(public userService: UserService) {
-  }
 
-  sidenavChangeState() {
-    this.sidenavOpened = !this.sidenavOpened
+  constructor(public userService: UserService, public  sidenavService: SidenavService) {
   }
 }

@@ -11,6 +11,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeStationComponent } from './components/home-station/home-station.component';
 import { PlantViewComponent } from './components/plant-view/plant-view.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { NotifyComponent } from './components/notify/notify.component';
+import { HostListener } from '@angular/core';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     HomeStationComponent,
     PlantViewComponent,
     UserCardComponent,
+    NotifyComponent,
+
   ],
   entryComponents: [
     LogInComponent

@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
+import {SidenavService} from "../../services/sidenav.service";
 
 @Component({
   selector: 'app-user-card',
   templateUrl: './user-card.component.html',
   styleUrls: ['./user-card.component.css']
 })
-export class UserCardComponent implements OnInit {
+export class UserCardComponent {
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService, public sidenavService: SidenavService) { }
 
-  ngOnInit(): void {
+  logOut() {
+    this.userService.isAuthenticated = false
+    this.sidenavService.hideSidenav()
   }
-
 }

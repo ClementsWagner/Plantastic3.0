@@ -8,16 +8,18 @@
   </ng-template>
   <ng-template [ngIf]="userService.isAuthenticated">
     <div class="side-nav-button-right nav-bar-spacer">
-      <button mat-icon-button (click)="sidenavChangeState()">
+      <button mat-icon-button (click)="sidenavService.toggleSidenav()">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
   </ng-template>
 </mat-toolbar>
-
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" [fixedInViewport]="false" [(opened)]="sidenavOpened" position="end" class="side-nav">
+  <mat-sidenav #sidenav mode="side" [fixedInViewport]="false" [(opened)]="sidenavService.open" position="end" class="side-nav">
     <app-user-card></app-user-card>
+    <ng-template [ngIf]="sidenavService.notify">
+      <app-notify></app-notify>
+    </ng-template>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>

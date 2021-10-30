@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {homeStation} from "../../models/home-station";
 import {ActivatedRoute} from "@angular/router";
 import {sensor} from "../../models/sensor";
+import {SidenavService} from "../../services/sidenav.service";
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-plant-view',
@@ -18,11 +20,12 @@ export class PlantViewComponent implements OnInit {
 
   homeStation: homeStation | undefined;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, public sidenavService: SidenavService) {
 
   }
 
   ngOnInit(): void {
+    this.sidenavService.showNotify()
     const routeParams = this.route.snapshot.paramMap;
     const serialNumberFromRoute = String(routeParams.get('homeStationId'));
 
@@ -30,6 +33,11 @@ export class PlantViewComponent implements OnInit {
 
     if (this.homeStation)
       this.sensors = this.getSensors(this.homeStation);
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(){
+    this.sidenavService.hideNotify()
   }
 
   getSensors(homeStation: homeStation){
