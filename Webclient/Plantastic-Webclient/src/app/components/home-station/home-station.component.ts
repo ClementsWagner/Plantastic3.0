@@ -15,4 +15,5 @@ export class HomeStationComponent {
 
     this.homeStations[0].active=true;
   }
+
 }

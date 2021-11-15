@@ -22,7 +22,12 @@ TLS con = TLS();
 
 const char* ssid = "PlantasticController";
 const char* password = "123456789";
-String address = "192.88.24.215"; 
+//Server address for development
+String address = "localhost:3000";
+//Real server address
+//String address = "192.88.24.215"; 
+
+
 
 String token;
 // Create AsyncWebServer object on port 80
@@ -153,7 +158,10 @@ void setup(){
     delay(100);
   }
 
-  getApiToken();
+  //API Token has not been implemented server side
+  //getApiToken();
+  
+  
   // Setting the ESP as an access point
   setupAccessPoint();
   
@@ -188,6 +196,11 @@ void setup(){
 }
 
 void loop() {
+  
+  //String route = "/api/Measurement";
+
+  //Route for development on json-server
+  String route = "/measurements";
   delay(200);
   if(WiFi.isConnected()){
     String data = popStringArray(dataArr, dataListSize);
@@ -195,7 +208,7 @@ void loop() {
       String tmp = getJsonFromData(data);
       Serial.print("POST: ");
       Serial.println(tmp);
-      con.postServer(&client, address, 443, "/api/Measurement", tmp, token);
+      con.postServer(&client, address, 443, route, tmp, token);
     }
   }
 }

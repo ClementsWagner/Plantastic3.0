@@ -4,12 +4,16 @@
 
 .notify-card{
   margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .notify-delete-button{
   float: right;
 }
 .notify-title{
+  margin-top: 20px;
+  margin-bottom: 10px;
   text-align: center;
   font-size: large;
 }
@@ -32,4 +36,10 @@
 .notify-input-form {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.notify-header{
+  align-content: center;
+  text-align: center;
+
 }

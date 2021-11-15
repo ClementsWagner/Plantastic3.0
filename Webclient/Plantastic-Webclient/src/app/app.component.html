@@ -15,7 +15,7 @@
   </ng-template>
 </mat-toolbar>
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" [fixedInViewport]="false" [(opened)]="sidenavService.open" position="end" class="side-nav">
+  <mat-sidenav #sidenav mode="side" [fixedInViewport]="false" [(opened)]="sidenavService.open" position="start" class="side-nav">
     <app-user-card></app-user-card>
     <ng-template [ngIf]="sidenavService.notify">
       <app-notify></app-notify>

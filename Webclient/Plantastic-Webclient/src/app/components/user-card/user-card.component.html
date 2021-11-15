@@ -1,3 +1,4 @@
+<!--
 <mat-card class="user-card">
   <mat-card-title>
     <mat-icon class="user-card-icon">person</mat-icon>
@@ -9,3 +10,13 @@
     <button mat-button (click)="logOut()" routerLink="/">Log out</button>
   </div>
 </mat-card>
+-->
+
+<div class="user-card">
+  <mat-icon class="user-card-icon">person</mat-icon>
+  {{userService.email}}
+</div>
+<div class="log-out-button">
+  <button mat-button (click)="logOut()" routerLink="/">Log out</button>
+</div>
+<mat-divider></mat-divider>

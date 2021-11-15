@@ -6,6 +6,15 @@
   cursor: pointer;
 }
 
+.home-station-card-add {
+  width: 60%;
+  margin-top: 20px;
+  margin-left:auto;
+  margin-right:auto;
+  cursor: pointer;
+  text-align: center;
+}
+
 .active-dot{
   background-color: green;
   height: 20px;
@@ -23,3 +32,5 @@
   display: inline-block;
   float:right;
 }
+
+
