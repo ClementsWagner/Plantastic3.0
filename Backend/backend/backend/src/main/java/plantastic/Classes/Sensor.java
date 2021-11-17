@@ -1,7 +1,4 @@
-package plantastic;
-
-import lombok.Getter;
-import lombok.Setter;
+package plantastic.Classes;
 
 import java.util.UUID;
 
@@ -12,8 +9,6 @@ enum PlantType{
     Blumen
 }
 
-@Getter
-@Setter
 public class Sensor {
 
     private UUID id;
@@ -21,16 +16,4 @@ public class Sensor {
     private String mac;
     private String displayName;
     private PlantType plantType;
-}
-
-@Getter
-@Setter
-public class SensorData {
-
-    private UUID id;
-    private UUID sensorId;
-    private double power;
-    private double moisture;
-    private boolean available;
-    private double light;
 }

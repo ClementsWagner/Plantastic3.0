@@ -1,9 +1,5 @@
-package plantastic;
+package plantastic.DB;
 
 public class SensorDB {
-
-}
-
-public class SensorDataDB {
 
 }

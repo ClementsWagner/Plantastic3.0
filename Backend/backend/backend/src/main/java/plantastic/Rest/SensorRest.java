@@ -1,9 +1,5 @@
-package plantastic;
+package plantastic.Rest;
 
 public class SensorRest {
-
-}
-
-public class SensorDataRest {
 
 }

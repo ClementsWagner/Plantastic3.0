@@ -1,12 +1,7 @@
-package plantastic;
-
-import lombok.Getter;
-import lombok.Setter;
+package plantastic.Classes;
 
 import java.util.UUID;
 
-@Getter
-@Setter
 public class HomeStation {
 
     private UUID id;

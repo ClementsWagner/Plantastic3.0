@@ -1,4 +1,4 @@
-package plantastic;
+package plantastic.Rest;
 
 public class UserRest {
 
