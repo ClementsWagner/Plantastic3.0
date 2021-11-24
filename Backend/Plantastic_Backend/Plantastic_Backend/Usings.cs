@@ -1,0 +1,15 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Formatters;
+global using System.Text.Json;
+global using System.Text.Json.Serialization;
+global using System.ComponentModel.DataAnnotations;
+global using PlanTastic_Backend.Classes;
+global using PlanTastic_Backend.DB;
+global using PlanTastic_Backend.Rest;
+global using PlanTastic_Backend;
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
