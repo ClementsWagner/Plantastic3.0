@@ -1,5 +1,6 @@
 #include "SPIFFSReader.h"
 
+
 bool SPIFFSReader::loadConfiguration(const char *filename, Config &config){
     File file = SPIFFS.open(filename,"r");
     if(!file){
@@ -16,12 +17,17 @@ bool SPIFFSReader::loadConfiguration(const char *filename, Config &config){
         return false;
     }
   // Copy values from the JsonDocument to the Config
-    strlcpy(config.SSID,                  // <- destination
+    /*strlcpy(config.SSID,                  // <- destination
           doc["SSID"] | "",  // <- source
           sizeof(config.SSID));  
     strlcpy(config.Password,                  // <- destination
     doc["Password"] | "",  // <- source
-    sizeof(config.Password));  
+    sizeof(config.Password));  */
+    strcpy(config.SSID,                  
+          doc["SSID"] | "");
+    strcpy(config.Password,                  
+    doc["Password"] | "");
+
     file.close();
     return true;
 }

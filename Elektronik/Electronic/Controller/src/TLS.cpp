@@ -2,9 +2,25 @@
 #include "Arduino.h"
 #include <StackThunk.h>
 #include <time.h>
-#include <WiFiClientSecure.h>
+//#include <WiFiClientSecure.h>
 #include "TLS.h"
+#include <ESP8266HTTPClient.h>
+#include <WiFiClient.h>
 
+String postServerUnsecure(WiFiClient *client, String host, const uint16_t port, String path,String data) {
+  HTTPClient http;
+  String url = String("http://"+host+path);
+  http.begin(*client, url);
+  int httpCode = http.POST(data);
+
+  Serial.printf("Trying: %s%s",host,path);
+  Serial.printf("Http response: %d",httpCode);
+
+  http.end();
+  return String("t");
+}
+
+/*
 void TLS::setClock() {
   configTime(3 * 3600, 0, "pool.ntp.org", "time.nist.gov");
 
@@ -32,9 +48,11 @@ String TLS::postServer(BearSSL::WiFiClientSecure *client, String host, const uin
   ESP.resetFreeContStack();
   uint32_t freeStackStart = ESP.getFreeContStack();
   Serial.printf("Trying: %s:%u...", host.c_str(), port);
-  client->connect(host.c_str(), port);
+  int result = client->connect(host.c_str(), port);
+  
   if (!client->connected()) {
-    Serial.printf("*** Can't connect. ***\n-------\n");
+    Serial.printf("\n*** Can't connect. Error: %d ***\n-------\n", result);
+    delay(1000);
     return output;
   }
   Serial.printf("Connected!\n-------\n");
@@ -125,4 +143,4 @@ EBhN2bnmoLz3ohCWVVFmzQRts6kLNHw=
   //String("{ \"mac\": \"3e:90:5e:e4:02:22\", \"password\": \"123456789\"}"));
 
   return client;
-}
+}*/

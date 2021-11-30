@@ -4,6 +4,8 @@
 #include <ArduinoJson.h>
 #include <SPI.h>
 #include <FS.h>
+#include <string.h>
+
 class SPIFFSReader{
 	public:
 	struct Config{
