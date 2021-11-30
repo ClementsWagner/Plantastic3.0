@@ -68,7 +68,7 @@ void loop() {
 String readSensorData(){
   //int humidity = analogRead(AnalogPin);
   //uint16_t lux = lightMeter.readLightLevel();
-  int humidity = 800;
+  int humidity = random(500,1000);
   uint16_t lux = 300;
 
   //int humidity = 11;
