@@ -42,8 +42,8 @@ void setup() {
   Serial.println("");
   Serial.println("Connected to WiFi");
 
-   Wire.begin(); //init i2c Bus
-   lightMeter.begin(); //init lightmetersensor
+   //Wire.begin(); //init i2c Bus
+   //lightMeter.begin(); //init lightmetersensor
 }
 
 void loop() {
@@ -66,8 +66,11 @@ void loop() {
 }
 
 String readSensorData(){
-  int humidity = analogRead(AnalogPin);
-  uint16_t lux = lightMeter.readLightLevel();
+  //int humidity = analogRead(AnalogPin);
+  //uint16_t lux = lightMeter.readLightLevel();
+  int humidity = random(500,1000);
+  uint16_t lux = 300;
+
   //int humidity = 11;
   //uint16_t lux = 20;
   char tmp[64];

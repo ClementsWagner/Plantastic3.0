@@ -8,7 +8,9 @@
 #include <ESPAsyncTCP.h>
 #include <ESP8266WiFiMulti.h>
 #include <ESPAsyncWiFiManager.h>
-
+#include <string.h>
+#include <WiFiClient.h>
+#include <ESP8266HTTPClient.h>
 
 #define dataListSize 100
 
@@ -18,12 +20,13 @@ uint8_t *postData;
 size_t dataSize;
 
 String dataArr[dataListSize];
-TLS con = TLS();
+//TLS con = TLS();
 
 const char* ssid = "PlantasticController";
 const char* password = "123456789";
 //Server address for development
-String address = "localhost:3000";
+//ID: 45r34-1638277687
+String address = "http://ptsv2.com/t/45r34-1638277687";
 //Real server address
 //String address = "192.88.24.215"; 
 
@@ -34,7 +37,8 @@ String token;
 AsyncWebServer server(80);
 DNSServer dns;
 
-BearSSL::WiFiClientSecure client;
+//BearSSL::WiFiClientSecure client;
+WiFiClient httpClient;
 
 SPIFFSReader reader = SPIFFSReader();
 SPIFFSReader::Config config;
@@ -104,7 +108,7 @@ String getJsonFromData(String data){
   return String(json);
 }
 
-void getApiToken(){
+/*void getApiToken(){
   client = con.activateFingerprint();
   //String data("{ \"mac\": \""+WiFi.macAddress()+"\", \"password\": \"123456789\"}");
   String data("{ \"mac\": \"3e:90:5e:e4:02:22\", \"password\": \"123456789\"}");
@@ -115,7 +119,7 @@ void getApiToken(){
   token = response.substring(pos+8, response.length()-2);
   Serial.print("Token: ");
   Serial.println(token);
-}
+}*/
 
 void connectWifi(){
   WiFi.mode(WIFI_STA);
@@ -126,13 +130,13 @@ void connectWifi(){
     Serial.print(".");
   }
   Serial.println("\nConnected to WiFi");
-  getApiToken();
+  //getApiToken();
 }
 
 void setupAccessPoint(){
   Serial.print("Setting AP (Access Point)…");
   // Remove the password parameter, if you want the AP (Access Point) to be open
-  WiFi.softAP(ssid, "1234");
+  WiFi.softAP(ssid);
 
   IPAddress IP = WiFi.softAPIP();
   Serial.print("AP IP address: ");
@@ -144,6 +148,20 @@ void setupWifi(){
   wifiManager.autoConnect("PlantasticController");
 }
 
+int postServerUnsecureDemo(WiFiClient client, String host, const uint16_t port, String path,String data) {
+  HTTPClient http;
+  String url = String(host+path);
+  Serial.println("Open Connection");
+  http.begin(client, url);
+  int httpCode = http.POST(data);
+
+  Serial.printf("Trying: "); Serial.println(url);
+  Serial.printf("Http response: %d",httpCode);
+
+  http.end();
+  return httpCode;
+}
+
 void setup(){
   // Serial port for debugging purposes
   Serial.begin(115200);
@@ -152,12 +170,16 @@ void setup(){
   Serial.print("Mac Address: ");
   Serial.println(WiFi.macAddress());
 
+  Serial.println("Setup Wifi...");
+
   setupWifi();
+
 
   while(!WiFi.isConnected()){
     delay(100);
   }
 
+    Serial.println("Wifi Setup");
   //API Token has not been implemented server side
   //getApiToken();
   
@@ -170,10 +192,13 @@ void setup(){
     dataArr[i]="";  
   }
 
+  Serial.println("Acesspoint Setup");
+
   delay(1000);
   server.on("/post",HTTP_POST,[](AsyncWebServerRequest * request){},NULL,[](AsyncWebServerRequest * request, uint8_t *data, size_t len, size_t index, size_t total) {
     addStringToArray(dataArr, len, uintToString(data,len));
     Serial.println();
+    Serial.println("POST receive");
     request->send_P(200, "text/plain", "Es funktioniert");
   });
   server.on("/wifi",HTTP_POST,[](AsyncWebServerRequest * request){},NULL,[](AsyncWebServerRequest * request, uint8_t *data, size_t len, size_t index, size_t total) {
@@ -181,26 +206,37 @@ void setup(){
 
     String input = uintToString(data,len);
     deserializeJson(doc, input);
-    strlcpy(config.SSID,                  // <- destination
+    /*strlcpy(config.SSID,                  // <- destination
           doc["SSID"] | "",  // <- source
           sizeof(config.SSID));  
     strlcpy(config.Password,                  // <- destination
     doc["Password"] | "",  // <- source
-    sizeof(config.Password));  
+    sizeof(config.Password));  */
+    strcpy(config.SSID,                  
+          doc["SSID"] | "");
+    strcpy(config.Password,                 
+    doc["Password"] | "");
+
+    Serial.print("SSID:");Serial.println(config.SSID);
+    Serial.print("Password");Serial.println(config.Password);
+
     if(reader.saveConfiguation("/wifi.json",config)){
       connectWifi();
     }
   });
   // Start server
-  server.begin();
+  //server.begin();
+  Serial.println("Server start");
+
+  //Deactivate auth
+  token = "";
 }
 
 void loop() {
   
   //String route = "/api/Measurement";
-
   //Route for development on json-server
-  String route = "/measurements";
+  //String route = "/post";
   delay(200);
   if(WiFi.isConnected()){
     String data = popStringArray(dataArr, dataListSize);
@@ -208,7 +244,9 @@ void loop() {
       String tmp = getJsonFromData(data);
       Serial.print("POST: ");
       Serial.println(tmp);
-      con.postServer(&client, address, 443, route, tmp, token);
+      //con.postServer(&client, address, 80, route, tmp, token);
+      Serial.println("Post to Server:");
+      postServerUnsecureDemo(httpClient, address, 80, "/post", tmp);
     }
   }
 }

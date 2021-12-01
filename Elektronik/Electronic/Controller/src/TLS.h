@@ -2,15 +2,17 @@
 #define TLS_h
 
 #include "Arduino.h"
-#include <WiFiClientSecure.h>
+#include <WiFiClient.h>
+//#include <WiFiClientSecure.h>
 
 class TLS{
 	public:
-	BearSSL::WiFiClientSecure activateCertAuthority();
-	String postServer(BearSSL::WiFiClientSecure *client, String host, const uint16_t port, String path,String data, String token);
-	BearSSL::WiFiClientSecure activateFingerprint();
+	//BearSSL::WiFiClientSecure activateCertAuthority();
+	//String postServer(BearSSL::WiFiClientSecure *client, String host, const uint16_t port, String path,String data, String token);
+	//BearSSL::WiFiClientSecure activateFingerprint();
+	String postServerUnsecure(WiFiClient *client, String host, const uint16_t port, String path,String data);
 	private:
-	void setClock();
+	//void setClock();
 };
 
 #endif
