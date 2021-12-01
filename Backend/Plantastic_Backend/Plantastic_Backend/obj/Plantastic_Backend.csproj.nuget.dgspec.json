@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\elias\\source\\repos\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj": {}
+    "C:\\Users\\elias\\OneDrive\\Dokumente\\Plantastic3.0\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\elias\\source\\repos\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj": {
+    "C:\\Users\\elias\\OneDrive\\Dokumente\\Plantastic3.0\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elias\\source\\repos\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj",
+        "projectUniqueName": "C:\\Users\\elias\\OneDrive\\Dokumente\\Plantastic3.0\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj",
         "projectName": "Plantastic_Backend",
-        "projectPath": "C:\\Users\\elias\\source\\repos\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj",
+        "projectPath": "C:\\Users\\elias\\OneDrive\\Dokumente\\Plantastic3.0\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj",
         "packagesPath": "C:\\Users\\elias\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\elias\\source\\repos\\Plantastic_Backend\\Plantastic_Backend\\obj\\",
+        "outputPath": "C:\\Users\\elias\\OneDrive\\Dokumente\\Plantastic3.0\\Backend\\Plantastic_Backend\\Plantastic_Backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

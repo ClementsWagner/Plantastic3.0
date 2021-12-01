@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlanTastic_Backend.Classes
 {
-    internal class HomeStation
+    public class HomeStation
     {
         private int Id { get; set; }
         private String Mac { get; set; }

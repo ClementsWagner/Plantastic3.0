@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlanTastic_Backend.Classes
 {
-    internal class RegisterData
+    public class RegisterData
     {
         private int Id { get; set; }
         private int UserId { get; set; }

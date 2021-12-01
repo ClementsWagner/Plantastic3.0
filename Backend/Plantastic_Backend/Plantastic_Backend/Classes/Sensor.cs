@@ -13,7 +13,7 @@ namespace PlanTastic_Backend.Classes
         Obst,
         Blumen
     }
-    internal class Sensor
+    public class Sensor
     {
 
         private int Id { get; set; }
@@ -22,7 +22,7 @@ namespace PlanTastic_Backend.Classes
         private String DisplayName { get; set; }
         private PlantType PlantType { get; set; }
     }
-    internal class SensorData
+    public class SensorData
     {
         private int Id { get; set; }
         private int SensorId { get; set; }
