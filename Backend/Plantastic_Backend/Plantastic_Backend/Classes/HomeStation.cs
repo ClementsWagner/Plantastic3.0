@@ -8,8 +8,8 @@ namespace PlanTastic_Backend.Classes
 {
     public class HomeStation
     {
-        private int Id { get; set; }
-        private String Mac { get; set; }
-        private String Name { get; set; }
+        public int Id { get; set; }
+        public String Mac { get; set; }
+        public String Name { get; set; }
     }
 }

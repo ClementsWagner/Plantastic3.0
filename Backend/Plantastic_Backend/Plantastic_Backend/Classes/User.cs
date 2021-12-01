@@ -2,8 +2,8 @@
 {
     public class User
     {
-        private int Id { get; set; }
-        private String Email { get; set; }
-        private String Password { get; set; }
+        public int Id { get; set; }
+        public String Email { get; set; }
+        public String Password { get; set; }
     }
 }

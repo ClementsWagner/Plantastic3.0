@@ -42,6 +42,11 @@ namespace PlanTastic_Backend.DB
             await context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<Sensor> GetSensor(int id)
+        {
+            return await context.Sensors.FirstOrDefaultAsync(h => h.Id == id);
+        }
     }
     internal class SensorDataManager
     {
@@ -77,6 +82,11 @@ namespace PlanTastic_Backend.DB
             context.SensorDatas.Update(sensorData);
             await context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<SensorData> GetSensorData(int id)
+        {
+            return await context.SensorDatas.FirstOrDefaultAsync(h => h.Id == id);
         }
     }
 }

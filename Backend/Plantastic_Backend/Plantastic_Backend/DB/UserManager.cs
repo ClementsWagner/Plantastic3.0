@@ -43,5 +43,10 @@ namespace PlanTastic_Backend.DB
 
             return true;
         }
+
+        public async Task<User> GetUser(int id)
+        {
+            return await context.Users.FirstOrDefaultAsync(h => h.Id == id);
+        }
     }
 }

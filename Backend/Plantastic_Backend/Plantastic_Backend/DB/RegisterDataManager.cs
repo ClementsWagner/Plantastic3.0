@@ -42,5 +42,10 @@ namespace PlanTastic_Backend.DB
             await context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<RegisterData> GetRegisterData(int id)
+        {
+            return await context.RegisterDatas.FirstOrDefaultAsync(h => h.Id == id);
+        }
     }
 }

@@ -43,10 +43,10 @@ namespace PlanTastic_Backend.DB
             return true;
         }
 
-        /*public async HomeStation GetHomeStation(int id)
+        public async Task<HomeStation> GetHomeStation(int id)
         {
             return await context.HomeStations.FirstOrDefaultAsync(h => h.Id == id);
         }
-       */
+       
     }
 }
