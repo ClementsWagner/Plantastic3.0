@@ -1,5 +1,5 @@
 export interface HomeStation{
-  active: boolean;
+  id: number
   name: string;
-  readonly serialnumber: string
+  serialnumber: string
 }
