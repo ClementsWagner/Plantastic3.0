@@ -6,29 +6,29 @@ using System.Threading.Tasks;
 
 namespace PlanTastic_Backend.Classes
 {
-    enum PlantType
+    public enum PlantTypes
     {
         Kaktus,
         Gemüse,
         Obst,
         Blumen
     }
-    internal class Sensor
+    public class Sensor
     {
 
-        private int Id { get; set; }
-        private int HomeStationId { get; set; }
-        private String Mac { get; set; }
-        private String DisplayName { get; set; }
-        private PlantType PlantType { get; set; }
+        public int Id { get; set; }
+        public int HomeStationId { get; set; }
+        public String Mac { get; set; }
+        public String DisplayName { get; set; }
+        public PlantTypes PlantType { get; set; }
     }
-    internal class SensorData
+    public class SensorData
     {
-        private int Id { get; set; }
-        private int SensorId { get; set; }
-        private double Power { get; set; }
-        private double Moisture { get; set; }
-        private bool Available { get; set; }
-        private double Light { get; set; }
+        public int Id { get; set; }
+        public int SensorId { get; set; }
+        public double Power { get; set; }
+        public double Moisture { get; set; }
+        public bool Available { get; set; }
+        public double Light { get; set; }
     }
 }

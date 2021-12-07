@@ -1,5 +1,5 @@
-﻿namespace Plantastic_Backend.DB
-{
+﻿namespace Plantastic_Backend.DB;
+
     public class PlantasticContext: DbContext
     {
         public PlantasticContext(DbContextOptions<PlantasticContext> options) : base(options) { }
@@ -14,4 +14,4 @@
         {
         }
     }
-}
+
