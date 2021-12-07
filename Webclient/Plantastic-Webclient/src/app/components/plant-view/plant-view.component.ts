@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {homeStation} from "../../models/home-station";
+import {HomeStation} from "../../models/home-station";
 import {ActivatedRoute} from "@angular/router";
-import {sensor} from "../../models/sensor";
+import {Sensor} from "../../models/sensor";
 import {SidenavService} from "../../services/sidenav.service";
 import { HostListener } from '@angular/core';
 
@@ -13,12 +13,12 @@ import { HostListener } from '@angular/core';
 export class PlantViewComponent implements OnInit {
 
   //dummy data--
-  homeStations: homeStation[] = [new homeStation("Erdgeschoss", "1e-43-5a-f3"), new homeStation("Obergeschoss", "2c-14-3f-d5")];
-  sensors: sensor[] = []
+  homeStations: HomeStation[] = [{name: "Erdgeschoss", serialnumber: "1e-43-5a-f3", active: true}, {name: "Obergeschoss", serialnumber: "2c-14-3f-d5", active:false}];
+  sensors: Sensor[] = []
   plantTypes: string[] = ["Kaktus", "Blume", "Frucht", "Beere", "Gemüse"]
   //--
 
-  homeStation: homeStation | undefined;
+  homeStation: HomeStation | undefined;
 
   constructor(private route: ActivatedRoute, public sidenavService: SidenavService) {
 
@@ -40,8 +40,8 @@ export class PlantViewComponent implements OnInit {
     this.sidenavService.hideNotify()
   }
 
-  getSensors(homeStation: homeStation){
-    return [new sensor("1e-43-5a-f3", "Tomaten"), new sensor("1e-43-5a-f3", "Kaktus")]
+  getSensors(homeStation: HomeStation){
+    return [{homeStationId: "1e-43-5a-f3", name: "Tomate"}, {homeStationId: "1e-43-5a-f3", name: "Kaktus"}]
   }
 
   findHomeStation(serialNumber: string){

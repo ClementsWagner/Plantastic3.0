@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {homeStation} from "../../models/home-station";
+import {HomeStation} from "../../models/home-station";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -9,7 +9,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class HomeStationComponent {
 
-  homeStations: homeStation[] = [new homeStation("Erdgeschoss", "1e-43-5a-f3"), new homeStation("Obergeschoss", "2c-14-3f-b5")];
+  homeStations: HomeStation[] = [{name: "Erdgeschoss", serialnumber: "1e-43-5a-f3", active: true}, {name: "Obergeschoss", serialnumber: "2c-14-3f-d5", active: false}];
 
   constructor() {
 
