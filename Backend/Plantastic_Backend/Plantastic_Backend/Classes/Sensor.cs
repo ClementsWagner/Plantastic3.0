@@ -13,11 +13,14 @@ namespace PlanTastic_Backend.Classes
         Obst,
         Blumen
     }
+
+    public record SensorDTO(int Id, string name, PlantTypes plantType, int Status, double Power);
+
     public class Sensor
     {
 
         public int Id { get; set; }
-        public int HomeStationId { get; set; }
+        public HomeStation HomeStation { get; set; }
         public String Mac { get; set; }
         public String DisplayName { get; set; }
         public PlantTypes PlantType { get; set; }
@@ -25,10 +28,15 @@ namespace PlanTastic_Backend.Classes
     public class SensorData
     {
         public int Id { get; set; }
-        public int SensorId { get; set; }
+        public Sensor Sensor { get; set; }
         public double Power { get; set; }
         public double Moisture { get; set; }
-        public bool Available { get; set; }
         public double Light { get; set; }
+        public DateTime Time { get; set; }
+
+        public static int Status(SensorData data)
+        {
+            return (int)(data.Moisture + data.Light) / 2;
+        }
     }
 }

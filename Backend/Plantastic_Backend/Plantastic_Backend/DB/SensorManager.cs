@@ -16,6 +16,7 @@ namespace PlanTastic_Backend.DB
             this.context = context;
         }
 
+        #region Sensor
         public async Task AddSensor(Sensor sensor)
         {
             context.Sensors.Add(sensor);
@@ -43,50 +44,23 @@ namespace PlanTastic_Backend.DB
             return true;
         }
 
-        public async Task<Sensor> GetSensor(int id)
+        public async Task<SensorDTO> GetSensor(int id)
         {
-            return await context.Sensors.FirstOrDefaultAsync(h => h.Id == id);
+            return await context.Sensors.Where(h => h.Id == id)
+                .Join(context.SensorDatas, sen => sen.Id, senD => senD.Sensor.Id,(sen, senD) => senD)
+                .Select(s => new SensorDTO(s.Sensor.Id, s.Sensor.DisplayName, s.Sensor.PlantType, 
+                SensorData.Status(s), s.Power))
+                .FirstOrDefaultAsync();
         }
-    }
-    internal class SensorDataManager
-    {
-        private readonly PlantasticContext context;
+#endregion
 
-        public SensorDataManager(PlantasticContext context)
-        {
-            this.context = context;
-        }
-
+        #region SensorData
         public async Task AddSensorData(SensorData sensorData)
         {
+            sensorData.Time = DateTime.Now;
             context.SensorDatas.Add(sensorData);
             await context.SaveChangesAsync();
         }
-
-        public async Task<bool> RemoveSensorData(int id)
-        {
-            var sensorData = await context.SensorDatas.FirstOrDefaultAsync(sd => sd.Id == id);
-            if (sensorData == null)
-                return false;
-
-            context.SensorDatas.Remove(sensorData);
-            await context.SaveChangesAsync();
-            return true;
-        }
-
-        public async Task<bool> UpdateSensorData(SensorData sensorData)
-        {
-            if (sensorData == null)
-                return false;
-
-            context.SensorDatas.Update(sensorData);
-            await context.SaveChangesAsync();
-            return true;
-        }
-
-        public async Task<SensorData> GetSensorData(int id)
-        {
-            return await context.SensorDatas.FirstOrDefaultAsync(h => h.Id == id);
-        }
+#endregion
     }
 }

@@ -15,7 +15,6 @@ builder.Services.AddDbContext<PlantasticContext>(
     options => options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]))
     .AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddScoped<HomeStationManager>();
-builder.Services.AddScoped<RegisterDataManager>();
 builder.Services.AddScoped<SensorManager>();
 builder.Services.AddScoped<UserManager>();
 builder.Services.AddHealthChecks().AddDbContextCheck<PlantasticContext>();
