@@ -44,9 +44,17 @@ namespace PlanTastic_Backend.DB
             return true;
         }
 
-        public async Task<User> GetUser(int id)
+        public async Task<UserDTO> GetUser(int id)
         {
-            return await context.Users.FirstOrDefaultAsync(h => h.Id == id);
+            try
+            {
+                User user = await context.Users.Where(h => h.Id == id).FirstOrDefaultAsync();
+                return new UserDTO(user.Id, user.Email);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

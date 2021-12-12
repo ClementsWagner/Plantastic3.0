@@ -16,7 +16,7 @@ namespace PlanTastic_Backend.Rest
         {
             this.manager = manager;
         }
-
+        #region Sensor
         [HttpPost]
         public async Task<ActionResult> AddSensor(Sensor sensor)
         {
@@ -47,20 +47,15 @@ namespace PlanTastic_Backend.Rest
         {
             return await manager.RemoveSensor(id) ? NoContent() : NotFound();
         }
-    }
 
-
-    [Route("backend/[controller]")]
-    [ApiController]
-    internal class SensorDataController : ControllerBase
-    {
-        private readonly SensorDataManager manager;
-
-        public SensorDataController(SensorDataManager manager)
+        [HttpGet]
+        public async Task<SensorDTO> GetSensor(int id)
         {
-            this.manager = manager;
+            return await manager.GetSensor(id);
         }
+        #endregion
 
+        #region SensorData
         [HttpPost]
         public async Task<ActionResult> AddSensorData(SensorData sensorData)
         {
@@ -79,17 +74,6 @@ namespace PlanTastic_Backend.Rest
                 });
             }
         }
-
-        [HttpPut]
-        public async Task<ActionResult> UpdateSensorData(SensorData sensorData)
-        {
-            return await manager.UpdateSensorData(sensorData) ? NoContent() : NotFound();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteSensorData(int id)
-        {
-            return await manager.RemoveSensorData(id) ? NoContent() : NotFound();
-        }
+        #endregion
     }
 }

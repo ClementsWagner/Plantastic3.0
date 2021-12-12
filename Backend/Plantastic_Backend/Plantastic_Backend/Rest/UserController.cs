@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PlanTastic_Backend.Rest
-{
+{ 
+
     [Route("backend/[controller]")]
     [ApiController]
     internal class UserController: ControllerBase
@@ -23,7 +24,8 @@ namespace PlanTastic_Backend.Rest
             try
             {
                 await manager.AddUser(user);
-                return Created(string.Empty, user);
+                var userDto = new UserDTO(user.Id, user.Email);
+                return Created(string.Empty, userDto);
             }
             catch (ArgumentException ex)
             {
@@ -46,6 +48,12 @@ namespace PlanTastic_Backend.Rest
         public async Task<ActionResult> DeleteUser(int id)
         {
             return await manager.RemoveUser(id) ? NoContent() : NotFound();
+        }
+
+        [HttpGet]
+        public async Task<UserDTO> GetUser(int id)
+        {
+                return await manager.GetUser(id);        
         }
     }
 }

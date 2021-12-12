@@ -9,8 +9,8 @@ namespace PlanTastic_Backend.Classes
     public class RegisterData
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public int HomeStationId { get; set; }
+        public User User { get; set; }
+        public HomeStation HomeStation { get; set; }
         public bool Notification { get; set; }
     }
 }
