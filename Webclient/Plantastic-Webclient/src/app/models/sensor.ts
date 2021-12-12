@@ -1,5 +1,6 @@
 export interface Sensor{
-  homeStationId: string;
+  id: number,
+  homeStationId: number;
   name: string;
   power?: number;
   plantType?: string;
