@@ -2,7 +2,7 @@
   <mat-card-title>Sign Up</mat-card-title>
   <mat-card-content>
     <mat-form-field>
-      <input matInput placeholder="Email"type="email">
+      <input matInput placeholder="Email"type="email" [(ngModel)]="newUser.email">
     </mat-form-field><br/>
 
     <mat-form-field>
@@ -10,9 +10,9 @@
     </mat-form-field><br/>
 
     <mat-form-field>
-      <input matInput placeholder="Repeat password"type="password">
+      <input matInput placeholder="Repeat password"type="password" [(ngModel)]="newUser.password">
     </mat-form-field><br/>
-    <button mat-raised-button color="primary" style="margin-right:5px;">Sign Up</button>
+    <button mat-raised-button color="primary" style="margin-right:5px;" (click)="signUp()">Sign Up</button>
   </mat-card-content>
 </mat-card>
 

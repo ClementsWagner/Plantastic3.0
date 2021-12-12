@@ -13,7 +13,7 @@ import { HostListener } from '@angular/core';
 export class PlantViewComponent implements OnInit {
 
   //dummy data--
-  homeStations: HomeStation[] = [{name: "Erdgeschoss", serialnumber: "1e-43-5a-f3", active: true}, {name: "Obergeschoss", serialnumber: "2c-14-3f-d5", active:false}];
+  homeStations: HomeStation[] = [{id: 0,name: "Erdgeschoss", serialnumber: "1e-43-5a-f3"}, {id: 0,name: "Obergeschoss", serialnumber: "2c-14-3f-d5"}];
   sensors: Sensor[] = []
   plantTypes: string[] = ["Kaktus", "Blume", "Frucht", "Beere", "Gemüse"]
   //--
@@ -41,7 +41,7 @@ export class PlantViewComponent implements OnInit {
   }
 
   getSensors(homeStation: HomeStation){
-    return [{homeStationId: "1e-43-5a-f3", name: "Tomate"}, {homeStationId: "1e-43-5a-f3", name: "Kaktus"}]
+    return [{id: 0, homeStationId: 0, name: "Tomate"}, {id: 0, homeStationId: 0, name: "Kaktus"}]
   }
 
   findHomeStation(serialNumber: string){

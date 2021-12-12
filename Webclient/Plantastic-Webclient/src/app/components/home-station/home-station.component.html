@@ -2,8 +2,8 @@
   <mat-card class="home-station-card" [routerLink]="['/HomeStation', homeStation.serialnumber]">
     <mat-card-title>
       {{ homeStation.name }}
-      <span *ngIf="homeStation.active" class="active-dot"></span>
-      <span *ngIf="!homeStation.active" class="inactive-dot"></span>
+      <!--<span *ngIf="homeStation.active" class="active-dot"></span>
+      <span *ngIf="!homeStation.active" class="inactive-dot"></span>-->
     </mat-card-title>
     <mat-card-subtitle>Seriennummer: {{ homeStation.serialnumber }}</mat-card-subtitle>
   </mat-card>
