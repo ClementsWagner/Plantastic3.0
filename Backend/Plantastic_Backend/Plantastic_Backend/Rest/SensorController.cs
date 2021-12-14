@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlanTastic_Backend.Rest
 {
-    [Route("backend/[controller]")]
+    [Route("backend/Sensor")]
     [ApiController]
     internal class SensorController : ControllerBase
     {

@@ -1,0 +1,71 @@
+﻿@host = https://localhost:7246
+
+###
+POST {{host}}/backend/User
+Content-Type: application/json
+
+{
+	"email": "plantastic@gmail.com",
+	"password": "plantastic"
+}
+
+###
+GET {{host}}/backend/User/plantastic@gmail.com
+
+###
+POST {{host}}/backend/HomeStation/1
+Content-Type: application/json
+
+{
+	"name": "Zuhause",
+	"Serialnumber": 1234
+}
+
+###
+POST {{host}}/backend/HomeStation/1
+Content-Type: application/json
+
+{
+	"name": "Arbeit",
+	"Serialnumber": 12345
+}
+
+###
+GET {{host}}/backend/HomeStation/all/1
+
+###
+PUT {{host}}/backend/HomeStation
+Content-Type: application/json
+
+{
+	"id": 2,
+	"name": "Garten",
+	"Serialnumber": 12345
+}
+
+###
+DELETE {{host}}/backend/HomeStation/2
+
+###
+POST {{host}}/backend/Sensor
+Content-Type: application/json
+
+{
+	"name": "Glücksfeder",
+	"Mac": 2345,
+	"HomestationId": 1
+}
+
+###
+GET {{host}}/backend/Sensor/1
+
+###
+PUT {{host}}/backend/Sensor
+Content-Type: application/json
+
+{
+	"SensorId": 1,
+	"name": "Gluecksfeder",
+	"plantType": "Blume",
+	"HomeStationId": 1
+}

@@ -11,7 +11,7 @@ namespace PlanTastic_Backend.Classes
         Kaktus,
         Gemüse,
         Obst,
-        Blumen
+        Blume
     }
 
     public record SensorDTO(int Id, string name, PlantTypes plantType, int Status, double Power);

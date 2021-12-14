@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlanTastic_Backend.Rest
 {
-    [Route("backend/[controller]")]
+    [Route("backend/HomeStation")]
     [ApiController]
     internal class HomeStationController : ControllerBase
     {
@@ -55,6 +55,7 @@ namespace PlanTastic_Backend.Rest
             return await manager.RemoveHomeStation(id) ? NoContent() : NotFound();
         }
 
+        [Route("all")]
         [HttpGet]
         public async Task<IEnumerable<HomeStation>> GetAllHomeStation([FromQuery] int user)
         {
