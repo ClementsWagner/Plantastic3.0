@@ -30,9 +30,17 @@
 }
 
 .ok-health{
-
+  color: orange;
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  float:right;
 }
 
 .bad-health{
-
+  color: red;
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  float:right;
 }

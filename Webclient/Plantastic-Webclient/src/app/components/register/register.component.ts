@@ -13,23 +13,27 @@ import { UserService } from 'src/app/services/user.service';
 export class RegisterComponent{
 
   newUser: NewUser = {email: "", password: ""}
-  user?: User
+  user: User = {userId: 0, email: ""}
 
   constructor(private userApi: UserRestService, private userService: UserService, private router: Router) {
-
+    console.log(userApi)
   }
 
   signUp(){
-    this.userApi.addUser(this.newUser).subscribe(value => this.user = value)
-    console.log("Signup")
-    console.log(this.user)
+    this.createUser()
 
     if(this.user != undefined){
+
       this.userService.email = this.user.email
       this.userService.userId = this.user.userId
       this.userService.isAuthenticated = true
       this.router.navigate(["/HomeStation"])
     }
+  }
+
+  createUser(){
+    const result = this.userApi.addUser(this.newUser)
+    result.subscribe(value => this.user = value)
   }
 
 }

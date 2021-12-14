@@ -9,7 +9,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class HomeStationComponent {
 
-  homeStations: HomeStation[] = [{id: 0, name: "Erdgeschoss", serialnumber: "1e-43-5a-f3"}, {id: 0,name: "Obergeschoss", serialnumber: "2c-14-3f-d5"}];
+  homeStations: HomeStation[] = [{id: 0, name: "Zuhause", serialnumber: "1e-43-5a-f3"}, {id: 0,name: "Büro", serialnumber: "2c-14-3f-d5"}];
 
   constructor() {
 

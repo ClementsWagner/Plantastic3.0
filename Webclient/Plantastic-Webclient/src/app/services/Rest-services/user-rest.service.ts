@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NewUser } from 'src/app/models/new-user';
@@ -11,16 +11,18 @@ import { RestBase } from './rest-base';
 export class UserRestService extends RestBase {
 
   constructor(protected http: HttpClient) {
-    super(http, "/user")
+    super(http, "/backend/user")
+    console.log("UserRest")
    }
 
-   addUser(newUser: NewUser): Observable<User>{
-      return this.http.post<User>(super.serverUrl, newUser)
+   addUser(newUser: NewUser){
+     console.log("ServerURL")
+     console.log(this.serverUrl)
+      return this.http.post<User>(this.serverUrl, newUser)
    }
 
    getUserByEmail(email: string): Observable<User>{
       let params = new HttpParams().set("email",email)
-      return this.http.get<User>(super.serverUrl, {params: params})
+      return this.http.get<User>(this.serverUrl, {params: params})
    }
-
 }

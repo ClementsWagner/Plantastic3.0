@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotifyComponent {
 
-  notifies: string[] = ['Peter@gmail.com', 'Mama@gmail.at']
+  notifies: string[] = []
   adding: boolean = false;
   newEmail: string = "";
 
