@@ -12,7 +12,7 @@ using Plantastic_Backend.DB;
 namespace Plantastic_Backend.Migrations
 {
     [DbContext(typeof(PlantasticContext))]
-    [Migration("20211209134152_Init")]
+    [Migration("20211215144937_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

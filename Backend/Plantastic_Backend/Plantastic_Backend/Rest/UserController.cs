@@ -51,7 +51,7 @@ namespace PlanTastic_Backend.Rest
             return await manager.RemoveUser(id) ? NoContent() : NotFound();
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<UserDTO> GetUser(int id)
         {
                 return await manager.GetUser(id);        

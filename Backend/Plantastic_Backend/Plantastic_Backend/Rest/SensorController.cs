@@ -8,7 +8,7 @@ namespace PlanTastic_Backend.Rest
 {
     [Route("backend/Sensor")]
     [ApiController]
-    internal class SensorController : ControllerBase
+    public class SensorController : ControllerBase
     {
         private readonly SensorManager manager;
 
@@ -22,7 +22,13 @@ namespace PlanTastic_Backend.Rest
         {
             try
             {
-                await manager.AddSensor(sensor);
+                await manager.AddSensor(new Sensor()
+                {
+                    DisplayName = sensor.DisplayName,
+                    Mac = sensor.Mac,
+                    PlantType = sensor.PlantType,
+                    HomeStation = manager.GetHomeStation(sensor.HomeStation.Id).Result
+                });
                 return Created(string.Empty, sensor);
             }
             catch (ArgumentException ex)
@@ -48,7 +54,7 @@ namespace PlanTastic_Backend.Rest
             return await manager.RemoveSensor(id) ? NoContent() : NotFound();
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<SensorDTO> GetSensor(int id)
         {
             return await manager.GetSensor(id);
@@ -56,6 +62,7 @@ namespace PlanTastic_Backend.Rest
         #endregion
 
         #region SensorData
+        /*
         [HttpPost]
         public async Task<ActionResult> AddSensorData(SensorData sensorData)
         {
@@ -74,6 +81,7 @@ namespace PlanTastic_Backend.Rest
                 });
             }
         }
+        */
         #endregion
     }
 }
