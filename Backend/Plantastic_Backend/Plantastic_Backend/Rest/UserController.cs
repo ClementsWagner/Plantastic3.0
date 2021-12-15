@@ -9,13 +9,14 @@ namespace PlanTastic_Backend.Rest
 
     [Route("backend/User")]
     [ApiController]
-    internal class UserController: ControllerBase
+    public class UserController: ControllerBase
     {
         private readonly UserManager manager;
 
         public UserController(UserManager manager)
         {
             this.manager = manager;
+            Console.WriteLine(this.RouteData);
         }
 
         [HttpPost]

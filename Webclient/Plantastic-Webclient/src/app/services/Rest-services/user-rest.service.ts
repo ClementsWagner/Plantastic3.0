@@ -12,12 +12,9 @@ export class UserRestService extends RestBase {
 
   constructor(protected http: HttpClient) {
     super(http, "/backend/user")
-    console.log("UserRest")
    }
 
    addUser(newUser: NewUser){
-     console.log("ServerURL")
-     console.log(this.serverUrl)
       return this.http.post<User>(this.serverUrl, newUser)
    }
 
