@@ -14,7 +14,7 @@
 <mat-divider></mat-divider>
 
 <mat-list>
-  <mat-list-item *ngFor="let item of notifies" style="font-size: medium;">
+  <mat-list-item *ngFor="let item of notifies">
     {{item}}
     <div class="stretch-container">
       <button mat-icon-button class="notify-delete-button" (click)="delete(item)"><mat-icon>cancel</mat-icon></button>

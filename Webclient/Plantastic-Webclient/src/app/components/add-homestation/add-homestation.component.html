@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Add Homestation</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Homestation name</mat-label>
+    <input matInput [(ngModel)]="newHomestation.name">
+  </mat-form-field><br/>
+  <mat-form-field appearance="fill">
+    <mat-label>Serialnumber</mat-label>
+    <input matInput [(ngModel)]="newHomestation.serialnumber">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button [mat-dialog-close]="newHomestation" cdkFocusInitial>Add</button>
+</div>

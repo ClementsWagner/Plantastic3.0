@@ -15,7 +15,9 @@ import { NotifyComponent } from './components/notify/notify.component';
 import { HostListener } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { AddHomestationComponent } from './components/add-homestation/add-homestation.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PlantViewComponent,
     UserCardComponent,
     NotifyComponent,
-
+    AddHomestationComponent
   ],
   entryComponents: [
     LogInComponent
@@ -39,7 +41,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularMaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule
   ],
   exports: [
     AppComponent,
