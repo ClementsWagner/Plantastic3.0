@@ -8,7 +8,7 @@ namespace PlanTastic_Backend.Rest
 {
     [Route("backend/HomeStation")]
     [ApiController]
-    internal class HomeStationController : ControllerBase
+    public class HomeStationController : ControllerBase
     {
         private readonly HomeStationManager manager;
 
@@ -18,15 +18,16 @@ namespace PlanTastic_Backend.Rest
         }
 
         #region HomeStation
-        [HttpPost]
-        public async Task<ActionResult> AddHomeStation([FromQuery] int user, [FromBody] HomeStation homeStation)
+        [Route("HS/{id}")]
+        [HttpPost("{id}")]
+        public async Task<ActionResult> AddHomeStation(int id, [FromBody] HomeStation homeStation)
         {
             try
             {
                 await manager.AddHomeStation(homeStation);
                 await manager.AddRegisterData(new RegisterData()
                 {
-                    User = manager.GetCompleteUser(user).Result,
+                    User = manager.GetCompleteUser(id).Result,
                     HomeStation = homeStation,
                     Notification = true
                 });
@@ -43,33 +44,37 @@ namespace PlanTastic_Backend.Rest
             }
         }
 
+        [Route("HS")]
         [HttpPut]
         public async Task<ActionResult> UpdateHomeStation(HomeStation homeStation)
         {
             return await manager.UpdateHomeStation(homeStation) ? NoContent() : NotFound();
         }
 
+        [Route("HS/{id}")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteHomeStation([FromQuery] int id)
         {
             return await manager.RemoveHomeStation(id) ? NoContent() : NotFound();
         }
 
-        [Route("all")]
-        [HttpGet]
+        [Route("HS/all/{id}")]
+        [HttpGet("{id}")]
         public async Task<IEnumerable<HomeStation>> GetAllHomeStation([FromQuery] int user)
         {
             return await manager.GetAllHomeStation(user);
         }
 
-        [HttpGet]
+        /*[Route("HS/{id}")]
+        [HttpGet("{id}")]
         public async Task<HomeStation> GetHomeStation([FromQuery] int id)
         {
             return await manager.GetHomeStation(id);
-        }
+        }*/
         #endregion
 
         #region RegisterData
+        [Route("RD")]
         [HttpPost]
         public async Task<ActionResult> AddRegisterData(RegisterData registerData)
         {
@@ -89,24 +94,28 @@ namespace PlanTastic_Backend.Rest
             }
         }
 
+        [Route("RD")]
         [HttpPut]
         public async Task<ActionResult> UpdateRegisterData(RegisterData registerData)
         {
             return await manager.UpdateRegisterData(registerData) ? NoContent() : NotFound();
         }
 
+        [Route("RD/{id}")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteRegisterData(int id)
         {
             return await manager.RemoveRegisterData(id) ? NoContent() : NotFound();
         }
 
-
-        [HttpGet]
-        public async Task<UserDTO> GetRegisterData([FromQuery] int id)
+        /*
+        [Route("RD/{id}")]
+        [HttpGet("{id}")]
+        public async Task<UserDTO> GetRegisterData(int id)
         {
-            return await manager.GetRegisterData(id);
-            #endregion
+            return await manager.GetRegisterData(id);          
         }
+        */
+        #endregion
     }
 }

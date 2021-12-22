@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PlanTastic_Backend.DB
 {
-    internal class HomeStationManager
+    public class HomeStationManager
     {
         private readonly PlantasticContext context;
 

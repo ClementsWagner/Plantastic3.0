@@ -10,15 +10,24 @@ Content-Type: application/json
 }
 
 ###
-GET {{host}}/backend/User/plantastic@gmail.com
+POST {{host}}/backend/User
+Content-Type: application/json
+
+{
+	"email": "testing@gmail.com",
+	"password": "test"
+}
+
+###
+GET {{host}}/backend/User/1
 
 ###
 POST {{host}}/backend/HomeStation/1
 Content-Type: application/json
 
 {
-	"name": "Zuhause",
-	"Serialnumber": 1234
+	"mac": "1234",
+	"name": "Zuhause"	
 }
 
 ###
@@ -26,12 +35,12 @@ POST {{host}}/backend/HomeStation/1
 Content-Type: application/json
 
 {
-	"name": "Arbeit",
-	"Serialnumber": 12345
+	"mac": "12345",
+	"name": "Arbeit"	
 }
 
 ###
-GET {{host}}/backend/HomeStation/all/1
+GET {{host}}/backend/HomeStation/1
 
 ###
 PUT {{host}}/backend/HomeStation
@@ -39,8 +48,8 @@ Content-Type: application/json
 
 {
 	"id": 2,
-	"name": "Garten",
-	"Serialnumber": 12345
+	"mac": 12345,
+	"name": "Garten"	
 }
 
 ###
@@ -51,9 +60,27 @@ POST {{host}}/backend/Sensor
 Content-Type: application/json
 
 {
-	"name": "Glücksfeder",
-	"Mac": 2345,
-	"HomestationId": 1
+	"displayname": "Glücksfeder",
+	"Mac": "2345",
+	"Homestation": {
+		"id": 1,
+		"mac": "1234",
+	"name": "Zuhause"	
+	}
+}
+
+###
+POST {{host}}/backend/Sensor
+Content-Type: application/json
+
+{
+	"displayname": "Kaktus",
+	"Mac": "23456",
+	"Homestation": {
+		"id": 1,
+		"mac": "1234",
+	"name": "Zuhause"	
+	}
 }
 
 ###
@@ -65,7 +92,11 @@ Content-Type: application/json
 
 {
 	"SensorId": 1,
-	"name": "Gluecksfeder",
-	"plantType": "Blume",
-	"HomeStationId": 1
+	"displayname": "Gluecksfeder",
+	"mac": "2345",
+	"plantType": 1,
+	"HomeStation": {
+		"mac": "1234",
+	"name": "Zuhause"	
+	}
 }

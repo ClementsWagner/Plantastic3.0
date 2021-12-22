@@ -7,13 +7,18 @@ using System.Threading.Tasks;
 
 namespace PlanTastic_Backend.DB
 {
-    internal class SensorManager
+    public class SensorManager
     {
         private readonly PlantasticContext context;
 
         public SensorManager(PlantasticContext context)
         {
             this.context = context;
+        }
+
+        public async Task<HomeStation> GetHomeStation(int id)
+        {
+            return await context.HomeStations.Where(h => h.Id == id).FirstOrDefaultAsync();
         }
 
         #region Sensor
