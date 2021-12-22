@@ -17,6 +17,7 @@ export class HomestationRestService extends RestBase {
    //To do add userId parameter
    getHomestations(userId: number):Observable<HomeStation[]>{
     return this.http.get<HomeStation[]>(this.serverUrl)
+    //return this.http.get<HomeStation[]>(this.serverUrl+`/${userId}`)
    }
 
    addHomestation(newHomestation: NewHomeStation){
