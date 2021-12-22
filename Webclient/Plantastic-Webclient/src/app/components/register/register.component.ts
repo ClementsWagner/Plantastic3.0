@@ -29,18 +29,21 @@ export class RegisterComponent{
 
   signUp(){
     this.createUser()
-
-    if(this.user.userId != 0){
-      this.userService.email = this.user.email
-      this.userService.userId = this.user.userId
-      this.userService.isAuthenticated = true
-      this.router.navigate(["/HomeStation"])
-    }
   }
 
   createUser(){
+    this.newUser.email = this.getFormfield("email")?.value
+    this.newUser.password = this.getFormfield("password")?.value
     const result = this.userApi.addUser(this.newUser)
-    result.subscribe(value => this.user = value)
+    result.subscribe(value => {
+      this.user = value
+      if(this.user.userId != 0){
+        this.userService.email = this.user.email
+        this.userService.userId = this.user.userId
+        this.userService.isAuthenticated = true
+        this.router.navigate(["/HomeStation"])
+      }
+    })
   }
 
   checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string){

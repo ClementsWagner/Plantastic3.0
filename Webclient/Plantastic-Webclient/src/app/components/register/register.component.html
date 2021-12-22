@@ -1,4 +1,4 @@
-<form [formGroup]="signUpForm">
+<form [formGroup]="signUpForm" (ngSubmit)="signUp()">
   <mat-card class="card">
     <mat-card-title>Sign Up</mat-card-title>
     <mat-card-content>
@@ -28,7 +28,7 @@
       </div>
 
 
-      <button mat-raised-button color="primary" style="margin-right:5px;" (click)="signUp()">Sign Up</button>
+      <button mat-raised-button color="primary" style="margin-right:5px;" type="submit">Sign Up</button>
     </mat-card-content>
   </mat-card>
 </form>
