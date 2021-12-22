@@ -14,10 +14,14 @@ import { HomestationRestService } from 'src/app/services/Rest-services/homestati
 })
 export class HomeStationComponent {
 
-  homeStations: HomeStation[] = [{id: 0, userId: 1, name: "Zuhause", serialnumber: "1e-43-5a-f3"}, {id: 0, userId: 1,name: "Büro", serialnumber: "2c-14-3f-d5"}];
+  homeStations: HomeStation[] = []
 
   constructor(public dialog: MatDialog, public userService: UserService, public homestationRest: HomestationRestService) {
+    this.loadHomeStations()
+  }
 
+  loadHomeStations(){
+    this.homestationRest.getHomestations(this.userService.userId).subscribe(value => this.homeStations=value)
   }
 
   addHomestation(){
@@ -29,7 +33,7 @@ export class HomeStationComponent {
     dialogRef.afterClosed().subscribe(result => {
       newHomestation = result
       if(newHomestation!=undefined && newHomestation.name!=undefined && newHomestation.serialnumber!=undefined){
-        this.homestationRest.addHomestation(newHomestation)
+        this.homestationRest.addHomestation(newHomestation).subscribe(() => this.loadHomeStations())
       }
     })
 
