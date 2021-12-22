@@ -9,15 +9,15 @@ import { RestBase } from './rest-base';
 export class HomestationRestService extends RestBase {
 
   constructor(protected http: HttpClient) {
-    super(http, "backend/homestation")
+    super(http, "/backend/homestation")
    }
 
    getHomestations(userId: number){
 
    }
 
-   addHomestation(newHomestation: NewHomeStation, userId: number){
-
+   addHomestation(newHomestation: NewHomeStation){
+    this.http.post(this.serverUrl, newHomestation).subscribe()
    }
 
 

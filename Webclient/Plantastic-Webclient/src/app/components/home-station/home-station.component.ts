@@ -21,14 +21,16 @@ export class HomeStationComponent {
   }
 
   addHomestation(){
-    let newHomestation: NewHomeStation = {name: "", serialnumber: ""}
+    let newHomestation: NewHomeStation
     let dialogRef = this.dialog.open(AddHomestationComponent, {
       height: '300px',
       width: '250px',
     });
     dialogRef.afterClosed().subscribe(result => {
       newHomestation = result
-      this.homestationRest.addHomestation(newHomestation, this.userService.userId)
+      if(newHomestation!=undefined && newHomestation.name!=undefined && newHomestation.serialnumber!=undefined){
+        this.homestationRest.addHomestation(newHomestation)
+      }
     })
 
   }

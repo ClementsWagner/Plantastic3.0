@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewHomeStation } from 'src/app/models/new-home-station';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-add-homestation',
@@ -8,10 +9,11 @@ import { NewHomeStation } from 'src/app/models/new-home-station';
 })
 export class AddHomestationComponent implements OnInit {
 
-  newHomestation: NewHomeStation = {name: "", serialnumber: ""}
+  newHomestation: NewHomeStation
 
-
-  constructor() { }
+  constructor(public userService: UserService) {
+    this.newHomestation = {userId: this.userService.userId,name: "", serialnumber: ""}
+  }
 
   ngOnInit(): void {
   }
