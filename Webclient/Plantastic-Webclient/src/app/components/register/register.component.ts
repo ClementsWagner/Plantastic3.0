@@ -15,7 +15,7 @@ import { CustomValidators } from 'src/app/providers/customValidator';
 export class RegisterComponent{
 
   newUser: NewUser = {email: "", password: ""}
-  user: User = {userId: 0, email: ""}
+  user: User = {id: 0, email: ""}
 
   signUpForm = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]),
@@ -37,9 +37,10 @@ export class RegisterComponent{
     const result = this.userApi.addUser(this.newUser)
     result.subscribe(value => {
       this.user = value
-      if(this.user.userId != 0){
+      console.log(value)
+      if(this.user.id != 0){
         this.userService.email = this.user.email
-        this.userService.userId = this.user.userId
+        this.userService.userId = this.user.id
         this.userService.isAuthenticated = true
         this.router.navigate(["/HomeStation"])
       }

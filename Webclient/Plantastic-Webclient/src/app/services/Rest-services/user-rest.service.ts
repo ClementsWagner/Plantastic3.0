@@ -14,7 +14,7 @@ export class UserRestService extends RestBase {
     super(http, "/backend/user")
    }
 
-   addUser(newUser: NewUser){
+   addUser(newUser: NewUser): Observable<User>{
       return this.http.post<User>(this.serverUrl, newUser)
    }
 

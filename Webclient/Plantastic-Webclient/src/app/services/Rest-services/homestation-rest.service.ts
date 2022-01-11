@@ -21,7 +21,7 @@ export class HomestationRestService extends RestBase {
    }
 
    addHomestation(newHomestation: NewHomeStation){
-    return this.http.post(this.serverUrl, newHomestation)
+    return this.http.post(this.serverUrl+`/${newHomestation.userId}`, newHomestation)
    }
 
 

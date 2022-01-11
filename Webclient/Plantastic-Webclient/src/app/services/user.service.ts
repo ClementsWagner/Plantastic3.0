@@ -18,8 +18,16 @@ export class UserService {
     return this._userId
   }
 
-  set userId(value : number){
+  setUserId(value: number){
     this._userId = value
+    console.log("Set UserId:")
+    console.log(value)
+  }
+
+  set userId(value: number){
+    this._userId = value
+    console.log("Set Id:")
+    console.log(value)
   }
 
   get isAuthenticated(): boolean {
@@ -36,5 +44,7 @@ export class UserService {
 
   set email(value: string) {
     this._email = value;
+    console.log("Set Email:")
+    console.log(value)
   }
 }

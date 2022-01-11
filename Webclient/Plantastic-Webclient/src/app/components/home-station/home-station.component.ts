@@ -32,11 +32,14 @@ export class HomeStationComponent {
     });
     dialogRef.afterClosed().subscribe(result => {
       newHomestation = result
+      newHomestation.userId = this.userService.userId
+      console.log(this.userService.email)
+      console.log(this.userService.userId)
       if(newHomestation!=undefined && newHomestation.name!=undefined && newHomestation.serialnumber!=undefined){
+        console.log(newHomestation)
         this.homestationRest.addHomestation(newHomestation).subscribe(() => this.loadHomeStations())
       }
     })
-
   }
 
 }

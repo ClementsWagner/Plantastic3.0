@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Sensor} from "../../models/sensor";
 import {SidenavService} from "../../services/sidenav.service";
 import { HostListener } from '@angular/core';
+import { SensorRestService } from 'src/app/services/Rest-services/sensor-rest.service';
 
 @Component({
   selector: 'app-plant-view',
@@ -20,7 +21,7 @@ export class PlantViewComponent implements OnInit {
 
   homeStation: HomeStation | undefined;
 
-  constructor(private route: ActivatedRoute, public sidenavService: SidenavService) {
+  constructor(private route: ActivatedRoute, public sidenavService: SidenavService, public sensorRest: SensorRestService) {
 
   }
 
