@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\herob\\Documents\\Projects\\Plantastic3.0\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj": {}
+    "C:\\Users\\elias\\OneDrive\\Dokumente\\Plantastic\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\herob\\Documents\\Projects\\Plantastic3.0\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj": {
+    "C:\\Users\\elias\\OneDrive\\Dokumente\\Plantastic\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\herob\\Documents\\Projects\\Plantastic3.0\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj",
+        "projectUniqueName": "C:\\Users\\elias\\OneDrive\\Dokumente\\Plantastic\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj",
         "projectName": "Plantastic_Backend",
-        "projectPath": "C:\\Users\\herob\\Documents\\Projects\\Plantastic3.0\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj",
-        "packagesPath": "C:\\Users\\herob\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\herob\\Documents\\Projects\\Plantastic3.0\\Backend\\Plantastic_Backend\\Plantastic_Backend\\obj\\",
+        "projectPath": "C:\\Users\\elias\\OneDrive\\Dokumente\\Plantastic\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Plantastic_Backend.csproj",
+        "packagesPath": "C:\\Users\\elias\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\elias\\OneDrive\\Dokumente\\Plantastic\\Backend\\Plantastic_Backend\\Plantastic_Backend\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\herob\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\elias\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.2.21505.57\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200-preview.21617.4\\RuntimeIdentifierGraph.json"
         }
       }
     }

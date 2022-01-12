@@ -48,7 +48,7 @@ Content-Type: application/json
 
 {
 	"id": 2,
-	"mac": 12345,
+	"mac": "12345",
 	"name": "Garten"	
 }
 
@@ -84,19 +84,37 @@ Content-Type: application/json
 }
 
 ###
+POST {{host}}/backend/SensorData
+Content-Type: application/json
+
+{
+	"sensor": {
+	"displayname": "Kaktus",
+	"Mac": "23456",
+	"Homestation": {
+		"id": 1,
+		"mac": "1234",
+	"name": "Zuhause"	
+	}},
+	"Power": 13.2,
+	"Moisture": 22.4,
+	"Light": 143.6
+}
+
+###
 GET {{host}}/backend/Sensor/1
 
 ###
 PUT {{host}}/backend/Sensor
 Content-Type: application/json
 
-{
+{	
 	"SensorId": 1,
 	"displayname": "Gluecksfeder",
 	"mac": "2345",
 	"plantType": 1,
 	"HomeStation": {
 		"mac": "1234",
-	"name": "Zuhause"	
+	"name": "Zuhause"
 	}
 }

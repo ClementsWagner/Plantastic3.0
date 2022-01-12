@@ -51,8 +51,8 @@ namespace PlanTastic_Backend.DB
 
         public async Task<IEnumerable<HomeStation>> GetAllHomeStation(int id)
         {
-            return (IEnumerable<HomeStation>)await context.RegisterDatas.Where(rd => rd.User.Id == id)
-                .Join(context.HomeStations, data => data.HomeStation.Id, home => home.Id, (home, data) => home)
+            return await context.RegisterDatas.Where(rd => rd.User.Id == id).
+                Select(h => new HomeStation { Id = h.HomeStation.Id, Mac = h.HomeStation.Mac, Name = h.HomeStation.Name})
                 .ToListAsync();
         }
         #endregion

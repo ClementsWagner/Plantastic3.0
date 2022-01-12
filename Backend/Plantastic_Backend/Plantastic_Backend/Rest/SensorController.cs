@@ -16,7 +16,7 @@ namespace PlanTastic_Backend.Rest
         {
             this.manager = manager;
         }
-        #region Sensor
+
         [HttpPost]
         public async Task<ActionResult> AddSensor(Sensor sensor)
         {
@@ -59,29 +59,5 @@ namespace PlanTastic_Backend.Rest
         {
             return await manager.GetSensor(id);
         }
-        #endregion
-
-        #region SensorData
-        /*
-        [HttpPost]
-        public async Task<ActionResult> AddSensorData(SensorData sensorData)
-        {
-            try
-            {
-                await manager.AddSensorData(sensorData);
-                return Created(string.Empty, sensorData);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new ProblemDetails
-                {
-                    //Type = "https://",
-                    Title = "Invalid sensorData",
-                    Detail = ex.Message,
-                });
-            }
-        }
-        */
-        #endregion
     }
 }

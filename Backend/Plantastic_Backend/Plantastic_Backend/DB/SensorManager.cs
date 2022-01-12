@@ -51,11 +51,10 @@ namespace PlanTastic_Backend.DB
 
         public async Task<SensorDTO> GetSensor(int id)
         {
-            return await context.Sensors.Where(h => h.Id == id)
-                .Join(context.SensorDatas, sen => sen.Id, senD => senD.Sensor.Id,(sen, senD) => senD)
+            return await context.SensorDatas.Where(h => h.Sensor.Id == id)
                 .Select(s => new SensorDTO(s.Sensor.Id, s.Sensor.DisplayName, s.Sensor.PlantType, 
                 SensorData.Status(s), s.Power))
-                .FirstOrDefaultAsync();
+                .FirstAsync();
         }
 #endregion
 
