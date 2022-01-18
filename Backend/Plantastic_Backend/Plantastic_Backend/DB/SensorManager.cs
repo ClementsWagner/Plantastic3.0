@@ -59,10 +59,17 @@ namespace PlanTastic_Backend.DB
 #endregion
 
         #region SensorData
-        public async Task AddSensorData(SensorData sensorData)
+        public async Task AddSensorData(SensorDataDTO sensorData)
         {
-            sensorData.Time = DateTime.Now;
-            context.SensorDatas.Add(sensorData);
+            SensorData data = new SensorData()
+            {
+                Sensor = context.Sensors.Where(h => h.Id == sensorData.SensorId).FirstOrDefault(),
+                Light = sensorData.Light,
+                Moisture = sensorData.Moisture,
+                Power = sensorData.Power,
+                Time = DateTime.Now
+        };
+            context.SensorDatas.Add(data);
             await context.SaveChangesAsync();
         }
 #endregion

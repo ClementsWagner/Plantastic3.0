@@ -88,14 +88,7 @@ POST {{host}}/backend/SensorData
 Content-Type: application/json
 
 {
-	"sensor": {
-	"displayname": "Kaktus",
-	"Mac": "23456",
-	"Homestation": {
-		"id": 1,
-		"mac": "1234",
-	"name": "Zuhause"	
-	}},
+	"sensorid": 1,
 	"Power": 13.2,
 	"Moisture": 22.4,
 	"Light": 143.6
@@ -109,11 +102,12 @@ PUT {{host}}/backend/Sensor
 Content-Type: application/json
 
 {	
-	"SensorId": 1,
+	"Id": 1,
 	"displayname": "Gluecksfeder",
 	"mac": "2345",
 	"plantType": 1,
 	"HomeStation": {
+		"id": 1,
 		"mac": "1234",
 	"name": "Zuhause"
 	}

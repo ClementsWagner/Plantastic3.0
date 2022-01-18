@@ -39,4 +39,6 @@ namespace PlanTastic_Backend.Classes
             return (int)(data.Moisture + data.Light) / 2;
         }
     }
+
+    public record SensorDataDTO(int SensorId, double Power, double Moisture, double Light);
 }

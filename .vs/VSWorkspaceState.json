@@ -2,11 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Backend",
-    "\\Backend\\Plantastic_Backend",
-    "\\Backend\\Plantastic_Backend\\Plantastic_Backend",
-    "\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Classes",
-    "\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Rest"
+    "\\Backend\\Plantastic_Backend"
   ],
-  "SelectedNode": "\\Backend\\Plantastic_Backend\\Plantastic_Backend\\Rest\\HomeStationController.cs",
+  "SelectedNode": "\\Backend\\Plantastic_Backend\\Plantastic_Backend.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -12,7 +12,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddSensorData(SensorData sensorData)
+        public async Task<ActionResult> AddSensorData(SensorDataDTO sensorData)
         {
             try
             {
