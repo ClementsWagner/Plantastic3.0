@@ -12,7 +12,7 @@ using Plantastic_Backend.DB;
 namespace Plantastic_Backend.Migrations
 {
     [DbContext(typeof(PlantasticContext))]
-    [Migration("20220118101156_Init")]
+    [Migration("20220119110558_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -111,8 +111,8 @@ namespace Plantastic_Backend.Migrations
                     b.Property<double>("Light")
                         .HasColumnType("float");
 
-                    b.Property<double>("Moisture")
-                        .HasColumnType("float");
+                    b.Property<int>("Moisture")
+                        .HasColumnType("int");
 
                     b.Property<double>("Power")
                         .HasColumnType("float");
@@ -145,6 +145,9 @@ namespace Plantastic_Backend.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Salt")
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("Id");
 

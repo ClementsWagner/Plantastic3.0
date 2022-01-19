@@ -88,9 +88,9 @@ POST {{host}}/backend/SensorData
 Content-Type: application/json
 
 {
-	"sensorid": 1,
+	"mac": "2345",
 	"Power": 13.2,
-	"Moisture": 22.4,
+	"Moisture": 22,
 	"Light": 143.6
 }
 
@@ -111,4 +111,20 @@ Content-Type: application/json
 		"mac": "1234",
 	"name": "Zuhause"
 	}
+}
+
+###
+PUT {{host}}/backend/User/1
+Content-Type: application/json
+
+{	
+	"passwort": "plantastic"
+}
+
+###
+PUT {{host}}/backend/User/1
+Content-Type: application/json
+
+{	
+	"passwort": "planttastic"
 }

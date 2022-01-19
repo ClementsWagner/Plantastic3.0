@@ -38,23 +38,29 @@ namespace PlanTastic_Backend.Rest
                 });
             }
         }
-
+/*
         [HttpPut]
         public async Task<ActionResult> UpdateUser(User user)
         {
             return await manager.UpdateUser(user) ? NoContent() : NotFound();
         }
-
+*/
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteUser(int id)
         {
             return await manager.RemoveUser(id) ? NoContent() : NotFound();
         }
 
-        [HttpGet("{id}")]
-        public async Task<UserDTO> GetUser(int id)
+         [HttpGet("{id}")]
+         public async Task<UserDTO> GetUser(int id)
+         {
+                 return await manager.GetUser(id);        
+         }
+
+        [HttpPut("{id}")]
+        public async Task<bool> CheckPW([FromRoute]int id, [FromBody]Passwort Passwort)
         {
-                return await manager.GetUser(id);        
+            return await manager.CheckPW(id, Passwort.passwort);
         }
     }
 }

@@ -30,7 +30,8 @@ namespace Plantastic_Backend.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Salt = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -94,7 +95,7 @@ namespace Plantastic_Backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SensorId = table.Column<int>(type: "int", nullable: false),
                     Power = table.Column<double>(type: "float", nullable: false),
-                    Moisture = table.Column<double>(type: "float", nullable: false),
+                    Moisture = table.Column<int>(type: "int", nullable: false),
                     Light = table.Column<double>(type: "float", nullable: false),
                     Time = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
