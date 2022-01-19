@@ -1,4 +1,4 @@
-﻿@host = https://localhost:7246
+﻿@host = http://localhost:5246
 
 ###
 POST {{host}}/backend/User
@@ -89,9 +89,9 @@ Content-Type: application/json
 
 {
 	"mac": "2345",
-	"Power": 13.2,
-	"Moisture": 22,
-	"Light": 143.6
+	"Power": 10.3,
+	"Moisture": 19,
+	"Light": 123.4
 }
 
 ###
