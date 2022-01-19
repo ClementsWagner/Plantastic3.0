@@ -30,7 +30,7 @@ namespace PlanTastic_Backend.Classes
         public int Id { get; set; }
         public Sensor Sensor { get; set; }
         public double Power { get; set; }
-        public double Moisture { get; set; }
+        public int Moisture { get; set; }
         public double Light { get; set; }
         public DateTime Time { get; set; }
 
@@ -40,5 +40,5 @@ namespace PlanTastic_Backend.Classes
         }
     }
 
-    public record SensorDataDTO(int SensorId, double Power, double Moisture, double Light);
+    public record SensorDataDTO(String mac, double Power, int Moisture, double Light);
 }

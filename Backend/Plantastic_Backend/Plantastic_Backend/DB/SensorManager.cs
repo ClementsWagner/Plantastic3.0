@@ -63,7 +63,7 @@ namespace PlanTastic_Backend.DB
         {
             SensorData data = new SensorData()
             {
-                Sensor = context.Sensors.Where(h => h.Id == sensorData.SensorId).FirstOrDefault(),
+                Sensor = context.Sensors.Where(h => h.Mac == sensorData.mac).FirstOrDefault(),
                 Light = sensorData.Light,
                 Moisture = sensorData.Moisture,
                 Power = sensorData.Power,
