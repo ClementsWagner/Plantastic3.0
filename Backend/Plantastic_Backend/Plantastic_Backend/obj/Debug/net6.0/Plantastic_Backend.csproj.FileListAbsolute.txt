@@ -183,3 +183,10 @@ C:\Users\herob\Documents\Projects\Plantastic3.0\Backend\Plantastic_Backend\Plant
 C:\Users\herob\Documents\Projects\Plantastic3.0\Backend\Plantastic_Backend\Plantastic_Backend\obj\Debug\net6.0\Plantastic_Backend.pdb
 C:\Users\herob\Documents\Projects\Plantastic3.0\Backend\Plantastic_Backend\Plantastic_Backend\obj\Debug\net6.0\Plantastic_Backend.genruntimeconfig.cache
 C:\Users\elias\OneDrive\Dokumente\Plantastic\Backend\Plantastic_Backend\Plantastic_Backend\obj\Debug\net6.0\refint\Plantastic_Backend.dll
+C:\Users\elias\OneDrive\Dokumente\Plantastic\Backend\Plantastic_Backend\Plantastic_Backend\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\elias\OneDrive\Dokumente\Plantastic\Backend\Plantastic_Backend\Plantastic_Backend\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\elias\OneDrive\Dokumente\Plantastic\Backend\Plantastic_Backend\Plantastic_Backend\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\elias\OneDrive\Dokumente\Plantastic\Backend\Plantastic_Backend\Plantastic_Backend\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+C:\Users\elias\OneDrive\Dokumente\Plantastic\Backend\Plantastic_Backend\Plantastic_Backend\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+C:\Users\elias\OneDrive\Dokumente\Plantastic\Backend\Plantastic_Backend\Plantastic_Backend\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\elias\OneDrive\Dokumente\Plantastic\Backend\Plantastic_Backend\Plantastic_Backend\bin\Debug\net6.0\ServiceStack.Interfaces.dll

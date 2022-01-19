@@ -12,14 +12,14 @@ using Plantastic_Backend.DB;
 namespace Plantastic_Backend.Migrations
 {
     [DbContext(typeof(PlantasticContext))]
-    [Migration("20220119110558_Init")]
+    [Migration("20220119131916_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.0")
+                .HasAnnotation("ProductVersion", "6.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -143,7 +143,6 @@ namespace Plantastic_Backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Salt")

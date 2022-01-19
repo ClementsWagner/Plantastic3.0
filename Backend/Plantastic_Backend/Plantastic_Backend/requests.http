@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ###
-GET {{host}}/backend/User/1
+GET {{host}}/backend/User/plantastic@gmail.com
 
 ###
 POST {{host}}/backend/HomeStation/1
@@ -114,7 +114,7 @@ Content-Type: application/json
 }
 
 ###
-PUT {{host}}/backend/User/1
+PUT {{host}}/backend/User/plantastic@gmail.com
 Content-Type: application/json
 
 {	
@@ -122,7 +122,7 @@ Content-Type: application/json
 }
 
 ###
-PUT {{host}}/backend/User/1
+PUT {{host}}/backend/User/plantastic@gmail.com
 Content-Type: application/json
 
 {	

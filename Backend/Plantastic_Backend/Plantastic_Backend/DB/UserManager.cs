@@ -39,9 +39,9 @@ namespace PlanTastic_Backend.DB
             await context.SaveChangesAsync();
         }
 
-        public async Task<bool> RemoveUser(int id)
+        public async Task<bool> RemoveUser(String email)
         {
-            var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            var user = await context.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user == null)
                 return false;
 
@@ -61,11 +61,11 @@ namespace PlanTastic_Backend.DB
             return true;
         }
 
-        public async Task<UserDTO> GetUser(int id)
+        public async Task<UserDTO> GetUser(String email)
         {
             try
             {
-                User user = await context.Users.Where(h => h.Id == id).FirstOrDefaultAsync();
+                User user = await context.Users.Where(h => h.Email == email).FirstOrDefaultAsync();
                 return new UserDTO(user.Id, user.Email);
             }
             catch
@@ -74,11 +74,11 @@ namespace PlanTastic_Backend.DB
             }
         }
 
-        public async Task<bool> CheckPW(int id, string passwort)
+        public async Task<bool> CheckPW(string email, string passwort)
         {
             try
             {
-                User user = await context.Users.Where(h => h.Id == id).FirstOrDefaultAsync();
+                User user = await context.Users.Where(h => h.Email == email).FirstOrDefaultAsync();
                 string hased = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                 password: passwort,
                 salt: user.Salt,
