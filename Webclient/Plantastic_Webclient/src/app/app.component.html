@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" class="app-header">
+  <div>Plantastic</div>
+  <ng-template [ngIf]="!userService.isAuthenticated">
+    <span class="nav-tool-items nav-bar-spacer">
+    <a mat-button routerLink="login" routerLinkActive="active">SignIn</a>
+    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">SignUp</a>
+  </span>
+  </ng-template>
+  <ng-template [ngIf]="userService.isAuthenticated">
+    <div class="side-nav-button-right nav-bar-spacer">
+      <button mat-icon-button (click)="sidenavService.toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </ng-template>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [fixedInViewport]="false" [(opened)]="sidenavService.open" position="start" class="side-nav">
+    <app-user-card></app-user-card>
+    <ng-template [ngIf]="sidenavService.notify">
+      <app-notify></app-notify>
+    </ng-template>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

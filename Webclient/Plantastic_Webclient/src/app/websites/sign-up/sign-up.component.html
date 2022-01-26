@@ -1,0 +1,38 @@
+<form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+  <mat-card class="card">
+    <mat-card-title>Sign Up</mat-card-title>
+    <mat-card-content>
+      <mat-form-field class="input-field">
+        <input matInput placeholder="Email" type="email" formControlName="email">
+      </mat-form-field>
+      <div *ngIf="isFieldValid('email')">
+        <mat-error *ngIf="getFormfield('email')?.hasError('required')">{{"Please enter a email"}}</mat-error>
+        <mat-error *ngIf="getFormfield('email')?.hasError('email')">{{"Please enter a valid email"}}</mat-error>
+      </div>
+
+
+      <mat-form-field class="input-field">
+        <input matInput placeholder="Password" type="password" formControlName="password">
+      </mat-form-field>
+      <div *ngIf="isFieldValid('password')">
+        <mat-error *ngIf="getFormfield('password')?.hasError('required')">{{"Please enter password"}}</mat-error>
+        <mat-error *ngIf="getFormfield('password')?.hasError('minlength')">{{"Password must have atleast 8 characters"}}</mat-error>
+      </div>
+
+      <mat-form-field class="input-field">
+        <input matInput placeholder="Confirm password" type="password" formControlName="confirmPassword">
+      </mat-form-field>
+      <div *ngIf="isFieldValid('confirmPassword')">
+        <mat-error *ngIf="getFormfield('confirmPassword')?.hasError('required')">{{"Please confirm password"}}</mat-error>
+        <mat-error *ngIf="checkIfMatchingPasswords('password', 'confirmPassword')">{{"Passwords have to match!"}}</mat-error>
+      </div>
+
+
+      <button mat-raised-button color="primary" style="margin-right:5px;" type="submit">Sign Up</button>
+    </mat-card-content>
+  </mat-card>
+</form>
+
+
+
+
