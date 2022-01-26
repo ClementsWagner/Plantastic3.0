@@ -14,7 +14,7 @@ namespace PlanTastic_Backend.Classes
         Blume
     }
 
-    public record SensorDTO(int Id, string name, PlantTypes plantType, int Status, double Power, DateTime Time);
+    public record SensorDTO(int Id, string name, PlantTypes plantType, int Status, double Power);
 
     public class Sensor
     {

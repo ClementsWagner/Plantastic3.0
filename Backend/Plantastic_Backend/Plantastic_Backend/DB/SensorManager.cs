@@ -53,7 +53,7 @@ namespace PlanTastic_Backend.DB
         {
             return await context.SensorDatas.Where(h => h.Sensor.Id == id).OrderByDescending(t => t.Time)
                 .Select(s => new SensorDTO(s.Sensor.Id, s.Sensor.DisplayName, s.Sensor.PlantType, 
-                SensorData.Status(s), s.Power, s.Time))
+                SensorData.Status(s), s.Power))
                 .FirstAsync();
         }
 #endregion

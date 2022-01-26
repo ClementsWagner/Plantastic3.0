@@ -89,9 +89,9 @@ Content-Type: application/json
 
 {
 	"mac": "2345",
-	"Power": 10.3,
-	"Moisture": 19,
-	"Light": 123.4
+	"Power": 9.3,
+	"Moisture": 20,
+	"Light": 143.7
 }
 
 ###
