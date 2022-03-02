@@ -1,0 +1,7 @@
+POST http://mockbin.org/bin/470e0e6f-e1ca-4d35-bb81-88d004469eb6/view#apiembed
+Content-Type: application/json
+
+{
+	"tesst":"tesd"
+}
+

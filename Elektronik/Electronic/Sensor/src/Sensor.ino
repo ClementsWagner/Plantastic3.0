@@ -22,6 +22,11 @@
 #define BMP_MOSI (11)
 #define BMP_CS   (10)
 
+#define humidityDelta (float)10
+#define lightDelta (float)30
+#define tempDelta (float)1
+#define maxTemp (float)55
+
 ESP8266WiFiMulti WiFiMulti;
 
 int AnalogPin = A0;    // select the input pin for the hydrometer
@@ -35,6 +40,8 @@ int counter = 0;
 
 unsigned long previousMillis = 0;
 const long interval = 5000; 
+
+float lastSent[3] = {(float)0, (float)0, (float)0};
 
 void setup() {
   Serial.begin(115200);
@@ -56,14 +63,16 @@ void setup() {
 
 void loop() {
   unsigned long currentMillis = millis();
-  
+  String data;
   if(currentMillis - previousMillis >= interval) {
     counter++;
      // Check WiFi connection status
     if ((WiFiMulti.run() == WL_CONNECTED)) {
       //httpPOSTRequest("http://192.168.4.1/post", String(counter));
-      Serial.println(readSensorData());
-      httpPOSTRequest("http://192.168.4.1/post", readSensorData());
+      if(readSensorData(data)){
+        Serial.println(data);
+        httpPOSTRequest("http://192.168.4.1/post", data);
+      }    
       // save the last HTTP GET Request
       previousMillis = currentMillis;
     }
@@ -73,7 +82,8 @@ void loop() {
   }
 }
 
-String readSensorData(){
+bool readSensorData(String& result){
+  bool send = false;
   float lux, temp, pressure;
   int humidity = analogRead(AnalogPin);
   lux = readLightLevel();
@@ -82,11 +92,33 @@ String readSensorData(){
   //int humidity = random(500,1000);
   //uint16_t lux = 300;
 
+  if(absolute(lastSent[0]-((float)humidity)) >= humidityDelta){
+    lastSent[0] = (float)humidity;
+    send = true;
+  }
+  if(absolute(lastSent[1]-lux) >= lightDelta){
+    lastSent[1] = lux;
+    send = true;
+  }
+  if((absolute(lastSent[2]-temp) >= tempDelta) && temp < maxTemp){
+    lastSent[2] = temp;
+    send = true;
+  }
+
   char tmp[64];
-  sprintf(tmp, "%d;%f", humidity,lux);
-  printf("Humidity:%d; Light:%f; Temp:%f; Pressure:%f\n", humidity,lux, temp, pressure);
-  String result = tmp;
-  return result;
+  //sprintf(tmp, "%d;%f", humidity,lux);
+  String mac = String(WiFi.macAddress());
+  sprintf(tmp, "{\"humidity\":%d,\"light\":%.2f,\"temperature\":%.2f,\"mac\":\"%s\"}", humidity,lux,temp,mac.c_str());
+  printf("Humidity:%d; Light:%.2f; Temp:%.2f; Pressure:%.2f\n", humidity,lux, temp, pressure);
+  result = tmp;
+  return send;
+}
+
+float absolute(float value){
+  if(value<0){
+    value = value*-1;
+  }
+  return value;
 }
 
 float readLightLevel(){

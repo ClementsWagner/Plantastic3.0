@@ -1,0 +1,95 @@
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<script type="text/javascript">
+
+function showData(){
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			var data = JSON.parse(this.responseText);
+			buildTable(data);
+		}
+	}
+	xmlHttp.open("GET", "readData.php", true);
+	xmlHttp.send();
+}
+
+function buildTable(data){
+	let reversed = data.reverse();
+	let table = "";
+	table = "<table><tr><th>Humidity</th><th>Brightness</th><th>Temperature</th><th>Recorded</th></tr>";
+	reversed.forEach(element => table += `<tr><td>${element["humidity"]}</td><td>${element["light"]}</td><td>${element["temperature"]}</td><td>${element["DateTime"]}</td></tr>`);
+	table += "</table>";
+	document.getElementById("dataTable").innerHTML = table;
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+
+function showChart(){
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			var data = JSON.parse(this.responseText);
+			drawChart(data)
+		}
+	}
+	xmlHttp.open("GET", "readData.php", true);
+	xmlHttp.send();
+}
+
+function drawChart(data){
+	let labels = generateLabel(data)
+	let humidity = generateHumidityData(data)
+//	let light = generateLightData(data)
+//	let temp = generateTempData(data)
+
+	new Chart("myChart", {
+		type: "line",
+		data:{
+			labels: labels,
+			datasets: [{
+				data: humidity,
+				borderColor: "blue",
+				fill: false
+			}]
+		},
+	options:{}
+	})
+	
+}
+
+function generateLabel(data){
+ return ["1-1-22", "2-1-22", "3-1-22"]
+}
+
+function generateHumidityData(data){
+ return [100, 200, 300]
+}
+
+function generateLightData(data){
+
+}
+
+function generateTempData(data){
+
+}
+
+
+</script>
+</head>
+<body>
+<p>
+<canvas id="myChart"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+ showChart();
+ setInterval(showChart, 4000);
+</script>
+<div id="dataTable"></div>
+<script type="text/javascript">
+ showData();
+ setInterval(showData, 2000);
+</script>
+</p>
+</body>
+</html>

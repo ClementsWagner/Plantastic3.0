@@ -8,11 +8,15 @@
 #include <ESPAsyncTCP.h>
 #include <ESP8266WiFiMulti.h>
 #include <ESPAsyncWiFiManager.h>
-#include <string.h>
+#include <string>
 #include <WiFiClient.h>
 #include <ESP8266HTTPClient.h>
 
 #define dataListSize 100
+#define RED D4
+#define GREEN D5
+#define BLUE D6
+
 
 ESP8266WiFiMulti WiFiMulti;
 int postCount = 0;
@@ -26,7 +30,8 @@ const char* ssid = "PlantasticController";
 const char* password = "123456789";
 //Server address for development
 //ID: 45r34-1638277687
-String address = "http://ptsv2.com/t/45r34-1638277687";
+String address = "http://wag.familyds.org:8080";
+//String address = "http://demo7253786.mockable.io/plantastic";
 //Real server address
 //String address = "192.88.24.215"; 
 
@@ -101,11 +106,9 @@ String getJsonFromData(String data){
   data.indexOf(';');
   //Serial.print("Mois: ");
   int humidity = data.substring(0, data.indexOf(';')).toInt();
-  //Serial.print("Light: ");
-  //Serial.println(data.substring(data.indexOf(';')+1, data.length()));
   char json[64];
-  sprintf(json, "{\"Value\":%d,\"Time\":\"%s\",\"SensorId\":1}",humidity, getTime().c_str());
-  return String(json);
+  //sprintf(json, "{\"Value\":%d,\"Time\":\"%s\",\"SensorId\":1}",humidity, getTime().c_str());
+  return data;
 }
 
 /*void getApiToken(){
@@ -145,7 +148,7 @@ void setupAccessPoint(){
 
 void setupWifi(){
   AsyncWiFiManager wifiManager(&server,&dns);
-  wifiManager.autoConnect("PlantasticController");
+  wifiManager.autoConnect("Plantastic-Setup");
 }
 
 int postServerUnsecureDemo(WiFiClient client, String host, const uint16_t port, String path,String data) {
@@ -153,6 +156,9 @@ int postServerUnsecureDemo(WiFiClient client, String host, const uint16_t port, 
   String url = String(host+path);
   Serial.println("Open Connection");
   http.begin(client, url);
+  http.addHeader("Content-Type","application/json");
+  http.addHeader("Host", host);
+  http.addHeader("Content-Length", String(strlen(data.c_str())));
   int httpCode = http.POST(data);
 
   Serial.printf("Trying: "); Serial.println(url);
@@ -164,16 +170,25 @@ int postServerUnsecureDemo(WiFiClient client, String host, const uint16_t port, 
 
 void setup(){
   // Serial port for debugging purposes
+  pinMode(RED, OUTPUT);
+  pinMode(BLUE, OUTPUT);
+  pinMode(GREEN, OUTPUT);
   Serial.begin(115200);
   Serial.println();
+  digitalWrite(RED, HIGH);
+  digitalWrite(GREEN, LOW);
+  digitalWrite(BLUE, LOW);
 
   Serial.print("Mac Address: ");
   Serial.println(WiFi.macAddress());
 
   Serial.println("Setup Wifi...");
 
-  setupWifi();
+  digitalWrite(RED, LOW);
+  digitalWrite(GREEN, LOW);
+  digitalWrite(BLUE, HIGH);
 
+  setupWifi();
 
   while(!WiFi.isConnected()){
     delay(100);
@@ -185,14 +200,17 @@ void setup(){
   
   
   // Setting the ESP as an access point
+
   setupAccessPoint();
-  
 
   for(int i=0;i<dataListSize;i++){
     dataArr[i]="";  
   }
 
   Serial.println("Acesspoint Setup");
+  digitalWrite(RED, LOW);
+  digitalWrite(GREEN, HIGH);
+  digitalWrite(BLUE, LOW);
 
   delay(1000);
   server.on("/post",HTTP_POST,[](AsyncWebServerRequest * request){},NULL,[](AsyncWebServerRequest * request, uint8_t *data, size_t len, size_t index, size_t total) {
@@ -224,12 +242,15 @@ void setup(){
       connectWifi();
     }
   });
+  
   // Start server
   //server.begin();
   Serial.println("Server start");
 
   //Deactivate auth
   token = "";
+
+ 
 }
 
 void loop() {
@@ -241,12 +262,12 @@ void loop() {
   if(WiFi.isConnected()){
     String data = popStringArray(dataArr, dataListSize);
     if(data!=""){
-      String tmp = getJsonFromData(data);
+      String tmp = data;
       Serial.print("POST: ");
       Serial.println(tmp);
       //con.postServer(&client, address, 80, route, tmp, token);
       Serial.println("Post to Server:");
-      postServerUnsecureDemo(httpClient, address, 80, "/post", tmp);
+      postServerUnsecureDemo(httpClient, address, 8080, "/data.php", tmp);
     }
   }
 }
