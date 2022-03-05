@@ -14,7 +14,8 @@
 
 	<form action="Notification.php" method="post" name="add">
     	<input type="text" name="email" />
-		<input type="submit" value="Add" name="add" />
+		<input type="submit" value="Add" name="add" /> <br>
+		<span class="error"> <?php echo $emailErr;?></span>
 	</form>
 
 

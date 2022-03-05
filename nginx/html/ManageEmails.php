@@ -1,8 +1,16 @@
 <?php
 
+$emailErr = "";
+
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add']))
 {
-    addEmail($_POST['email']);
+    if(isEmailValid($_POST['email'])){
+        addEmail($_POST['email']);
+    }
+    else{
+        $emailErr = "Please enter a valid email!";
+    }
+    
 }
 
 if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['email']))
@@ -28,14 +36,22 @@ function getNumberOfEmails(){
 }
 
 function addEmail($email){
-    $numberOfEmails = getNumberOfEmails();
-    if($numberOfEmails==0){
-        file_put_contents('emails.csv', $email, FILE_APPEND);
+    $emailList = getEmails();
+    $numberOfEmails = count($emailList);
+    $exists = false;
+    foreach($emailList as $var){
+        if($email == $var){
+            $exists = true;
+        }
     }
-    else{
-        file_put_contents('emails.csv', ';' . $email, FILE_APPEND);
+    if(!$exists){
+        if($numberOfEmails==0){
+            file_put_contents('emails.csv', $email, FILE_APPEND);
+        }
+        else{
+            file_put_contents('emails.csv', ';' . $email, FILE_APPEND);
+        }
     }
-    
 }
 
 function removeEmail($del_email){
@@ -48,6 +64,14 @@ function removeEmail($del_email){
         $emailString = $emailString . $email . ';';
     }
     file_put_contents('emails.csv', substr($emailString,0,-1));
+}
+
+function isEmailValid($email){
+    if(strpos($email, '@')){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 ?>
