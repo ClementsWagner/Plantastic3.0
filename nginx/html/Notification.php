@@ -1,10 +1,5 @@
 <?php 
 		require ('ManageEmails.php');
-		if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['remove']))
-		{
-			echo 'removed';
-			removeEmail($_GET['email']);
-		}
 ?>
 
 <html>

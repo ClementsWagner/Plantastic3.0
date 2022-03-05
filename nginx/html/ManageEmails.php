@@ -5,9 +5,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add']))
     addEmail($_POST['email']);
 }
 
-if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['remove']))
+if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['email']))
 {
-    echo 'removed';
     removeEmail($_GET['email']);
 }
 
@@ -16,6 +15,10 @@ function getEmails(){
     $emailString = file_get_contents('emails.csv');
     $emailList = explode(';', $emailString);
     return $emailList;
+}
+
+function getNumberOfEmails(){
+    return getEmails().count();
 }
 
 function addEmail($email){
