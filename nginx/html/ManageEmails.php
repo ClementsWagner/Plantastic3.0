@@ -6,6 +6,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add']))
 {
     if(isEmailValid($_POST['email'])){
         addEmail($_POST['email']);
+        $_POST = array();
     }
     else{
         $emailErr = "Please enter a valid email!";
@@ -68,7 +69,13 @@ function removeEmail($del_email){
 
 function isEmailValid($email){
     if(strpos($email, '@')){
-        return true;
+        $splitMail = explode('@', $email);
+        if(count($splitMail) == 2 and strpos($splitMail[1], '.')){
+            return true;
+        }
+        else{
+            return false;
+        }
     }else{
         return false;
     }

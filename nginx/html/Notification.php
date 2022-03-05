@@ -13,7 +13,7 @@
 	</div>
 
 	<form action="Notification.php" method="post" name="add">
-    	<input type="text" name="email" />
+    	<input type="text" name="email" value="<?php print($_POST['email']);?>" />
 		<input type="submit" value="Add" name="add" /> <br>
 		<span class="error"> <?php echo $emailErr;?></span>
 	</form>
