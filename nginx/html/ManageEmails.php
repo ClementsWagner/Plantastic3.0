@@ -4,12 +4,15 @@ $emailErr = "";
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add']))
 {
-    if(isEmailValid($_POST['email'])){
-        addEmail($_POST['email']);
-        $_POST = array();
+    if(!isEmailDistinct($_POST['email'])){
+        $emailErr = "This email already exists!";
+    }
+    else if(!isEmailValid($_POST['email'])){
+        $emailErr = "Please enter a valid email!";
     }
     else{
-        $emailErr = "Please enter a valid email!";
+        addEmail($_POST['email']);
+        $_POST = array();
     }
     
 }
@@ -39,19 +42,12 @@ function getNumberOfEmails(){
 function addEmail($email){
     $emailList = getEmails();
     $numberOfEmails = count($emailList);
-    $exists = false;
-    foreach($emailList as $var){
-        if($email == $var){
-            $exists = true;
-        }
+    
+    if($numberOfEmails==0){
+        file_put_contents('emails.csv', $email, FILE_APPEND);
     }
-    if(!$exists){
-        if($numberOfEmails==0){
-            file_put_contents('emails.csv', $email, FILE_APPEND);
-        }
-        else{
-            file_put_contents('emails.csv', ';' . $email, FILE_APPEND);
-        }
+    else{
+        file_put_contents('emails.csv', ';' . $email, FILE_APPEND);
     }
 }
 
@@ -79,6 +75,17 @@ function isEmailValid($email){
     }else{
         return false;
     }
+}
+
+function isEmailDistinct($email){
+    $emailList = getEmails();
+    $distinct = true;
+    foreach($emailList as $var){
+        if($email == $var){
+            $distinct = false;
+        }
+    }
+    return $distinct;
 }
 
 ?>
