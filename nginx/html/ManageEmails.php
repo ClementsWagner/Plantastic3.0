@@ -5,10 +5,10 @@ $emailErr = "";
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add']))
 {
     if(!isEmailDistinct($_POST['email'])){
-        $emailErr = "This email already exists!";
+        $emailErr = "*This email already exists!";
     }
     else if(!isEmailValid($_POST['email'])){
-        $emailErr = "Please enter a valid email!";
+        $emailErr = "*Please enter a valid email!";
     }
     else{
         addEmail($_POST['email']);

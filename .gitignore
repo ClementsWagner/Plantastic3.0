@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/angular,node,platformio
 # Edit at https://www.toptal.com/developers/gitignore?templates=angular,node,platformio
 
+## Mailer ##
+GmailPassword.txt
+
 ### Angular ###
 ## Angular ##
 # compiled output
