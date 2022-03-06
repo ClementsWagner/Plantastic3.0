@@ -1,8 +1,8 @@
 <?php
-
 require ('PHPMailer-master/src/PHPMailer.php');
 require ('PHPMailer-master/src/SMTP.php');
 require ('PHPMailer-master/src/Exception.php');
+
 
 function sendEmail($recipient, $subject, $content){
     $mail = new \PHPMailer\PHPMailer\PHPMailer();
@@ -19,12 +19,7 @@ function sendEmail($recipient, $subject, $content){
     $mail->WordWrap = 100; // "The lenght of the text."  
     $mail->addAddress($recipient);
 
-    if(!$mail->Send()) {
-        echo "Message was not sent.";
-        echo "Mailer error: ". $mail->ErrorInfo;
-    } else {
-        echo "Message has been sent.";
-    }
+    $mail->Send()
     $_POST = array();
 }
 
@@ -34,6 +29,4 @@ function getPassword(){
     $password = file_get_contents("GmailPassword.txt");
     return $password;
 }
-
-
 ?>
