@@ -1,7 +1,32 @@
 <?php
 
+require ('PHPMailer-master/src/PHPMailer.php');
+require ('PHPMailer-master/src/SMTP.php');
+require ('PHPMailer-master/src/Exception.php');
 
+function sendEmail($recipient, $subject, $content){
+    $mail = new \PHPMailer\PHPMailer\PHPMailer();
+    $mail->IsSMTP();  // Telling the class to use SMTP  
+    
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = "ssl";
+    $mail->Host     = "smtp.gmail.com"; // SMTP server
+    $mail->Username = "plantasticnotifier@gmail.com"; // "The account"
+    $mail->Password = getPassword(); // "The password"
+    $mail->Port = 465; // "The port"
+    $mail->Subject  = $subject; // "The subject"
+    $mail->Body     = $content; // "The message."
+    $mail->WordWrap = 100; // "The lenght of the text."  
+    $mail->addAddress($recipient);
 
+    if(!$mail->Send()) {
+        echo "Message was not sent.";
+        echo "Mailer error: ". $mail->ErrorInfo;
+    } else {
+        echo "Message has been sent.";
+    }
+    $_POST = array();
+}
 
 
 

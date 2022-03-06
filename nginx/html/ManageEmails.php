@@ -1,9 +1,16 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require ('Mailer.php');
 
 $emailErr = "";
+$currEmail = "";
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add']))
 {
+    $currEmail = $_POST['email'];
     if(!isEmailDistinct($_POST['email'])){
         $emailErr = "*This email already exists!";
     }
@@ -12,6 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add']))
     }
     else{
         addEmail($_POST['email']);
+        sendEmail($_POST['email'], 'Test email', 'This is a plantatastic testmail!');
         $_POST = array();
     }
     
