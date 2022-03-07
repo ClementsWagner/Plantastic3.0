@@ -15,6 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['add']))
     else{
         addEmail($_POST['email']);
         $_POST = array();
+        $currEmail = "";
     }
     
 }
