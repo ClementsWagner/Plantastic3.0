@@ -2,9 +2,9 @@
 require ('PHPMailer-master/src/PHPMailer.php');
 require ('PHPMailer-master/src/SMTP.php');
 require ('PHPMailer-master/src/Exception.php');
+require ('ManageEmails.php');
 
-
-function sendEmail($recipient, $subject, $content){
+function sendEmails($subject, $content){
     $mail = new \PHPMailer\PHPMailer\PHPMailer();
     $mail->IsSMTP();  // Telling the class to use SMTP  
     
@@ -17,9 +17,13 @@ function sendEmail($recipient, $subject, $content){
     $mail->Subject  = $subject; // "The subject"
     $mail->Body     = $content; // "The message."
     $mail->WordWrap = 100; // "The lenght of the text."  
-    $mail->addAddress($recipient);
+    
+    $emailList = getEmails();
+    foreach($emailList as $recipient){
+        $mail->addAddress($recipient);
+    }
 
-    $mail->Send()
+    $mail->Send();
     $_POST = array();
 }
 

@@ -1,4 +1,7 @@
 <?php
+
+require ('ManageNotification.php');
+
 //Activat errors for development comment for production
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -28,6 +31,9 @@ $date = new DateTime('now', new DateTimeZone('Europe/Berlin'));
 $formatDate = strval(date_format($date, 'd-m-Y H:i:s'));
 
 $decoded += ["DateTime" => $formatDate];
+
+//Check if user needs to be notified
+notifyUser($decoded);
 
 $content = json_encode($decoded);
 
