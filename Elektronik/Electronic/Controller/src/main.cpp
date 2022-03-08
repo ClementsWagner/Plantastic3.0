@@ -31,10 +31,15 @@ const char* password = "123456789";
 //Server address for development
 //ID: 45r34-1638277687
 String address = "http://wag.familyds.org:8080";
+String route = "/data.php";
+uint16_t port = 8080;
+String address2 = "http://wag.familyds.org:8080";
+String route2 = "/data.php";
+uint16_t port2 = 8080;
 //String address = "http://demo7253786.mockable.io/plantastic";
 //Real server address
 //String address = "192.88.24.215"; 
-
+bool alternate = false;
 
 
 String token;
@@ -267,7 +272,14 @@ void loop() {
       Serial.println(tmp);
       //con.postServer(&client, address, 80, route, tmp, token);
       Serial.println("Post to Server:");
-      postServerUnsecureDemo(httpClient, address, 8080, "/data.php", tmp);
+      if(alternate){
+        alternate = false;
+        postServerUnsecureDemo(httpClient, address, 8080, "/data.php", tmp);
+      }
+      else{
+        alternate = true;
+        postServerUnsecureDemo(httpClient, address2, 8080, "/data.php", tmp);
+      }
     }
   }
 }

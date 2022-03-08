@@ -37,6 +37,7 @@ const char* ssid = "PlantasticController";
 const char* password = "";
 
 int counter = 0;
+int alternating = 1;
 
 unsigned long previousMillis = 0;
 const long interval = 5000; 
@@ -69,8 +70,16 @@ void loop() {
      // Check WiFi connection status
     if ((WiFiMulti.run() == WL_CONNECTED)) {
       //httpPOSTRequest("http://192.168.4.1/post", String(counter));
-      if(readSensorData(data)){
-        Serial.println(data);
+      
+      if(readSensorData(data) || alternating==0){
+        //Serial.println(data);
+    
+        if(alternating==1) {
+          alternating = 0;
+        }
+        else{
+          alternating = 1;
+        } 
         httpPOSTRequest("http://192.168.4.1/post", data);
       }    
       // save the last HTTP GET Request
