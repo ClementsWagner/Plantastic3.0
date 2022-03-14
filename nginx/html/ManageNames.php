@@ -6,7 +6,7 @@ function addMac($mac){
         $newName["mac"] = $mac;
         $newName["name"] = $mac;
         array_push($naming, $newName);
-        file_put_contents("naming.json", json_encode($naming));
+        file_put_contents("status.json", json_encode($naming));
     }
 }
 
@@ -19,7 +19,7 @@ function addName($mac, $name){
         }
         $count++;
     }
-    file_put_contents("naming.json", json_encode($naming));
+    file_put_contents("status.json", json_encode($naming));
 }
 
 function macExists($mac){
@@ -34,9 +34,13 @@ function macExists($mac){
 }
 
 function getNaming(){
-    $namingJson = file_get_contents('naming.json');
+    $namingJson = file_get_contents('status.json');
     $naming = json_decode($namingJson, true);
     return $naming;
+}
+
+function getName(){
+
 }
 
 ?>
