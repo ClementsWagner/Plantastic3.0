@@ -1,17 +1,25 @@
 <?php
     require ('Mailer.php');
 
+    
+
     function notifyUser($dataSet){
-        $subject = 'Eine Ihrer Pflanzen benoetigt fuersorge!';
+        $lastSent = new DateTime(file_get_contents('lastSent.txt'));
+        $currentTime = new DateTime('now');
+        $diff = getTimeDifferenceInHours($lastSent, $currentTime);
+        if($diff>24){
+            $subject = 'Eine Ihrer Pflanzen benoetigt fuersorge!';
         
-        $hum = ($dataSet['humidity']>600);
-        $temp =  ($dataSet['temperature']<0);
-        $light = ($dataSet['light']<10);
-
-        $text = getEmailBody($hum, $light, $temp);
-        sendEmails($subject, $text);
-
-        echo $text;
+            $hum = ($dataSet['humidity']>600);
+            $temp =  ($dataSet['temperature']<0);
+            $light = ($dataSet['light']<10);
+    
+            $text = getEmailBody($hum, $light, $temp);
+            sendEmails($subject, $text);
+    
+            echo $text;
+            file_put_contents('lastSent.txt', $currentTime->format('Y-m-d H:i:s'));
+        }
     }
 
     function getEmailBody($hum, $light, $temp){
@@ -35,4 +43,13 @@
         return $text;
     }
 
+
+    function getTimeDifferenceInHours($start, $end){
+        $diff = $start->diff($end);
+
+        $hours = $diff->h;
+        $hours = $hours + ($diff->days*24);
+
+        return $hours;
+    }
 ?>
