@@ -15,7 +15,6 @@ function addName($mac, $name){
     $count = 0;
     foreach($naming as $key => $value){
         if($value["mac"]==$mac){
-            echo $naming[$count]["name"];
             $naming[$count]["name"] = $name;
         }
         $count++;

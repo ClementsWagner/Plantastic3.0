@@ -1,6 +1,11 @@
 <?php
     require ('ManageNames.php');
 
+    if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['mac-value']) and isset($_POST['name-value']))
+    {
+        addName($_POST["mac-value"], $_POST['name-value']);
+    }
+
 ?>
 <html>
     <head>
@@ -24,7 +29,14 @@
                     foreach($naming as $name){
                         echo '<tr>';
                         echo '<td>' . $name['mac'] . '</td>';
-                        echo '<td>' . $name['name'] . '</td>';
+                        ?>
+                            <td>
+                            <form action="Naming.php" method="post" name="name">
+                                <input class="name-field" type="text" name="name-value" value="<?php print($name["name"]); ?>"/>
+                                <input type="hidden" name="mac-value" value="<?php print($name["mac"]); ?>"/>
+                            </form>
+                        </td>
+                        <?php
                         echo '</tr>';
                     }
                 ?>
