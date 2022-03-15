@@ -19,7 +19,14 @@
 </head>
 <body onload="JavaScript:timedRefresh(300000);">
     <?php 
-        
+        $metadata = getMetadata();
+        foreach($metadata as $entry){
+            ?>
+                <div class="status-container">
+                    <?php echo $entry["name"]; ?> <img src="images/<?php print($entry["status"]); ?>-smiley.png" class="status-image"/>
+                </div>    
+            <?php
+        }
     ?>
 </body>
 </html>
