@@ -1,9 +1,9 @@
 <?php
-    require ('ManageNames.php');
+    require ('ManageMetadata.php');
 
     if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['mac-value']) and isset($_POST['name-value']))
     {
-        addName($_POST["mac-value"], $_POST['name-value']);
+        changeName($_POST["mac-value"], $_POST['name-value']);
     }
 
 ?>
@@ -25,15 +25,15 @@
                     <th>Name</th>
                 </tr>
                 <?php 
-                    $naming = getNaming();
-                    foreach($naming as $name){
+                    $metadata = getMetadata();
+                    foreach($metadata as $entry){
                         echo '<tr>';
-                        echo '<td>' . $name['mac'] . '</td>';
+                        echo '<td>' . $entry['mac'] . '</td>';
                         ?>
                             <td>
                             <form action="Naming.php" method="post" name="name">
-                                <input class="name-field" type="text" name="name-value" value="<?php print($name["name"]); ?>"/>
-                                <input type="hidden" name="mac-value" value="<?php print($name["mac"]); ?>"/>
+                                <input class="name-field" type="text" name="name-value" value="<?php print($entry["name"]); ?>"/>
+                                <input type="hidden" name="mac-value" value="<?php print($entry["mac"]); ?>"/>
                             </form>
                         </td>
                         <?php

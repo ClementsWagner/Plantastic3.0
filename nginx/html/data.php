@@ -1,7 +1,7 @@
 <?php
 
 require ('ManageNotification.php');
-require ('ManageNames.php');
+require ('ManageMetadata.php');
 
 //Activat errors for development comment for production
 ini_set('display_errors', 1);
@@ -33,7 +33,7 @@ $formatDate = strval(date_format($date, 'd-m-Y H:i:s'));
 
 $decoded += ["DateTime" => $formatDate];
 
-addMac($decoded["mac"]);
+addMetadataEntry($decoded["mac"]);
 
 //Check if user needs to be notified
 notifyUser($decoded);
