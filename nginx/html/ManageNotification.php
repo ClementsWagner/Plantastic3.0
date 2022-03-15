@@ -1,10 +1,9 @@
 <?php
     require ('Mailer.php');
-
     
 
     function notifyUser($dataSet){
-        $lastSent = new DateTime(file_get_contents('lastSent.txt'));
+        $lastSent = new DateTime(getLastSendDate($dataSet["mac"]));
         $currentTime = new DateTime('now');
         $diff = getTimeDifferenceInHours($lastSent, $currentTime);
         if($diff>24){
@@ -18,7 +17,7 @@
             sendEmails($subject, $text);
     
             echo $text;
-            file_put_contents('lastSent.txt', $currentTime->format('Y-m-d H:i:s'));
+            changeLastSendDate($dataSet["mac"], $currentTime->format('Y-m-d H:i:s'));
         }
     }
 

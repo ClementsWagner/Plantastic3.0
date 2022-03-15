@@ -1,5 +1,5 @@
 <?php
-    require ('ManageMetadata.php');
+    require_once 'ManageMetadata.php';
 
     if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['mac-value']) and isset($_POST['name-value']))
     {

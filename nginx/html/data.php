@@ -1,6 +1,5 @@
 <?php
 
-require ('ManageNotification.php');
 require ('ManageMetadata.php');
 
 //Activat errors for development comment for production

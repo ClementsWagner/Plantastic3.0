@@ -1,4 +1,5 @@
 <?php 
+require 'ManageNotification.php';
 
 function getMetadata(){
     $metadataJson = file_get_contents('metadata.json');
@@ -35,17 +36,55 @@ function macExists($mac){
     return $exists;
 }
 
-
-function changeName($mac, $name){
-    $naming = getMetadata();
+function getIndexOfEntry($mac){
     $count = 0;
-    foreach($naming as $key => $value){
+    $metadata = getMetadata();
+    foreach($metadata as $key => $value){
         if($value["mac"]==$mac){
-            $naming[$count]["name"] = $name;
+            break;
         }
         $count++;
     }
-    file_put_contents("metadata.json", json_encode($naming));
+    return $count;
+}
+
+function changeName($mac, $name){
+    $metadata = getMetadata();
+    $count = getIndexOfEntry($mac);
+    $metadata[$count]["name"] = $name;
+    file_put_contents("metadata.json", json_encode($metadata));
+}
+
+function getName($mac){
+    $metadata = getMetadata();
+    $count = getIndexOfEntry($mac);
+    return $metadata[$count]["name"];
+}
+
+function changeStatus($mac, $status){
+    $metadata = getMetadata();
+    $count = getIndexOfEntry($mac);
+    $metadata[$count]["status"] = $status;
+    file_put_contents("metadata.json", json_encode($metadata));
+}
+
+function getStatus($mac){
+    $metadata = getMetadata();
+    $count = getIndexOfEntry($mac);
+    return $metadata[$count]["status"];
+}
+
+function changeLastSendDate($mac, $date){
+    $metadata = getMetadata();
+    $count = getIndexOfEntry($mac);
+    $metadata[$count]["last-sent"] = $date;
+    file_put_contents("metadata.json", json_encode($metadata));
+}
+
+function getLastSendDate($mac){
+    $metadata = getMetadata();
+    $count = getIndexOfEntry($mac);
+    return $metadata[$count]["last-sent"];
 }
 
 ?>
