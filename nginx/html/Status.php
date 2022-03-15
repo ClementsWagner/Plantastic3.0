@@ -24,9 +24,9 @@
     </head>
     <body onLoad="setInterval(showData, 2000)">
         <div class="topnav">
-            <a href="/"><img src="/images/Logo-small.png"></a>
+            <a href="/Status.php"><img src="/images/Logo-small.png"></a>
             <a href="/Notification.php"><img class="navbar-icon" src="/images/email-icon.png"></a>
-            <a href="/Status.php"><img class="navbar-icon" src="/images/status-icon.png"></a>
+            <a href="/stats.html"><img class="navbar-icon" src="/images/status-icon.png"></a>
             <a href="/Naming.php"><img class="navbar-icon" src="/images/naming-icon.png"></a>
         </div>
         <div id="status-container">

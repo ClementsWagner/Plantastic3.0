@@ -184,9 +184,19 @@ body {
 }
 
 .status-image{
-
+  vertical-align: middle;
+  float: right;
+  height: 64px;
 }
 
 .status-container{
-
+  font-size: 30px;
+  overflow: auto;
+  height: fit-content;
+  width: 70%;
+  min-width: 250px;
+  border-radius: 8px;
+  padding: 8px 8px 8px 8px;
+  margin: 15px auto auto auto;
+  box-shadow: 3px 3px 3px 3px #888888;
 }

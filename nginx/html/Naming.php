@@ -13,9 +13,9 @@
     </head>
     <body>
         <div class="topnav">
-            <a href="/"><img src="/images/Logo-small.png"></a>
+            <a href="/Status.php"><img src="/images/Logo-small.png"></a>
             <a href="/Notification.php"><img class="navbar-icon" src="/images/email-icon.png"></a>
-            <a href="/Status.php"><img class="navbar-icon" src="/images/status-icon.png"></a>
+            <a href="/stats.html"><img class="navbar-icon" src="/images/status-icon.png"></a>
             <a href="/Naming.php"><img class="navbar-icon" src="/images/naming-icon.png"></a>
         </div>
         <div>
@@ -30,8 +30,8 @@
                         echo '<tr>';
                         echo '<td>' . $entry['mac'] . '</td>';
                         ?>
-                            <td class="name-font">
-                            <form action="Naming.php" method="post" name="name" >
+                            <td>
+                            <form action="Naming.php" method="post" name="name">
                                 <input class="name-field" type="text" name="name-value" value="<?php print($entry["name"]); ?>"/>
                                 <input type="hidden" name="mac-value" value="<?php print($entry["mac"]); ?>"/>
                             </form>
