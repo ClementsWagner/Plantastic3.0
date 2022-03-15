@@ -157,6 +157,20 @@ body {
   margin: auto;
 }
 
+.name-field {
+  border: none;
+  outline: none;
+  padding: 5px 5px 8px 0px;
+  width: 100%;
+  background-color: transparent;
+  font-size: 18px;
+}
+
+.name-field:focus {
+  border-bottom: solid 1px orange;
+  width: fit-content;
+}
+
 .status-frame{
     display: block;       
     border: none;         
@@ -169,5 +183,5 @@ body {
 }
 
 .status-container{
-  
+
 }
