@@ -1,5 +1,4 @@
 <?php 
-require 'ManageNotification.php';
 
 function getMetadata(){
     $metadataJson = file_get_contents('metadata.json');

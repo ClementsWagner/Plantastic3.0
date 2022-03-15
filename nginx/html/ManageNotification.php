@@ -1,6 +1,7 @@
 <?php
     require ('Mailer.php');
-    
+    require_once ('ManageMetadata.php');
+    include_once ('ManageStatus.php');
 
     function notifyUser($dataSet){
         $lastSent = new DateTime(getLastSendDate($dataSet["mac"]));
@@ -9,11 +10,11 @@
         if($diff>24){
             $subject = 'Eine Ihrer Pflanzen benoetigt fuersorge!';
         
-            $hum = ($dataSet['humidity']>600);
-            $temp =  ($dataSet['temperature']<0);
-            $light = ($dataSet['light']<10);
+            $hum = $dataSet['humidity'];
+            $temp =  $dataSet['temperature'];
+            $light = $dataSet['light'];
     
-            $text = getEmailBody($hum, $light, $temp);
+            $text = getEmailBody(getHumidityStatus($hum), getLightStatus($light), getTemperatureStatus($temp));
             sendEmails($subject, $text);
     
             echo $text;

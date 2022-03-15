@@ -1,6 +1,7 @@
 <?php
 
-
+require ('ManageMetadata.php');
+require ('ManageStatus.php');
 
 
 

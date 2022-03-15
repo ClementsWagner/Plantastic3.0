@@ -1,6 +1,8 @@
 <?php
 
-require ('ManageMetadata.php');
+require_once ('ManageMetadata.php');
+require ('ManageNotification.php');
+
 
 //Activat errors for development comment for production
 ini_set('display_errors', 1);
@@ -33,6 +35,7 @@ $formatDate = strval(date_format($date, 'd-m-Y H:i:s'));
 $decoded += ["DateTime" => $formatDate];
 
 addMetadataEntry($decoded["mac"]);
+changeStatus($decoded["mac"], getPlantStatus($decoded));
 
 //Check if user needs to be notified
 notifyUser($decoded);
