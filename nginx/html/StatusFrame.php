@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
     <META HTTP-EQUIV="Expires" CONTENT="-1">
+    <meta http-equiv="refresh" content="5">
     <script type="text/JavaScript">
 
         function timedRefresh(timeoutPeriod) {
@@ -17,7 +18,7 @@
 
     </script>
 </head>
-<body onload="JavaScript:timedRefresh(300000);">
+<body >
     <?php 
         $metadata = getMetadata();
         foreach($metadata as $entry){

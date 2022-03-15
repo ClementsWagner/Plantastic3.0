@@ -1,4 +1,10 @@
 <?php 
+    require_once "ManageMetadata.php";
+
+    if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['status']))
+    {
+        echo json_encode(getMetadata());
+    }
 
     function getPlantStatus($dataset){
         $status = "good";
