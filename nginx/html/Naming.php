@@ -30,8 +30,8 @@
                         echo '<tr>';
                         echo '<td>' . $entry['mac'] . '</td>';
                         ?>
-                            <td>
-                            <form action="Naming.php" method="post" name="name">
+                            <td class="name-font">
+                            <form action="Naming.php" method="post" name="name" >
                                 <input class="name-field" type="text" name="name-value" value="<?php print($entry["name"]); ?>"/>
                                 <input type="hidden" name="mac-value" value="<?php print($entry["mac"]); ?>"/>
                             </form>

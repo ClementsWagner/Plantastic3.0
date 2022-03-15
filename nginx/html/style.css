@@ -17,6 +17,10 @@ td, th {
   text-align: left; 
 }
 
+td {
+  font-size: 18px;
+}
+
 body {
   width: 100%;
   margin: 0;
@@ -156,6 +160,7 @@ body {
   min-width: 250px;
   margin: auto;
 }
+
 
 .name-field {
   border: none;
