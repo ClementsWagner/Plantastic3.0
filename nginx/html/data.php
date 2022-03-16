@@ -35,10 +35,13 @@ $formatDate = strval(date_format($date, 'd-m-Y H:i:s'));
 $decoded += ["DateTime" => $formatDate];
 
 addMetadataEntry($decoded["mac"]);
+$oldStatus = getStatus($decoded["mac"]);
+var_dump($oldStatus);
 changeStatus($decoded["mac"], getPlantStatus($decoded));
 
+var_dump(getStatus($decoded["mac"]));
 //Check if user needs to be notified
-notifyUser($decoded);
+notifyUser($decoded, $oldStatus);
 
 $content = json_encode($decoded);
 

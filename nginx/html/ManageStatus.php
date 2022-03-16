@@ -13,7 +13,7 @@
         $light = getLightStatus($dataset['light']);
 
         if($hum){
-            if($dataset['humidity']>700 || $dataset['humidity']<200){
+            if($dataset['humidity']>600 || $dataset['humidity']<400){
                 $status = "bad";
             }
             else if($status != "bad"){
@@ -32,7 +32,7 @@
     }
 
     function getHumidityStatus($humidity){
-        return ($humidity>600||$humidity<300);
+        return ($humidity>500||$humidity<300);
     }
 
     function getTemperatureStatus($temp){

@@ -3,26 +3,31 @@
     require_once ('ManageMetadata.php');
     include_once ('ManageStatus.php');
 
-    function notifyUser($dataSet){
+    function notifyUser($dataSet, $oldStatus){
+        $newStatus = getStatus($dataSet["mac"]);
         $lastSent = new DateTime(getLastSendDate($dataSet["mac"]));
         $currentTime = new DateTime('now');
         $diff = getTimeDifferenceInHours($lastSent, $currentTime);
-        if($diff>24){
-            $subject = 'Eine Ihrer Pflanzen benoetigt fuersorge!';
-        
-            $hum = $dataSet['humidity'];
-            $temp =  $dataSet['temperature'];
-            $light = $dataSet['light'];
-    
-            $text = getEmailBody(getHumidityStatus($hum), getLightStatus($light), getTemperatureStatus($temp));
-            sendEmails($subject, $text);
-    
-            echo $text;
-            changeLastSendDate($dataSet["mac"], $currentTime->format('Y-m-d H:i:s'));
+        if($newStatus!="good"){
+            if(($oldStatus!="bad" && $newStatus=="bad")) {
+                if($diff>24 || ($oldStatus!="bad" && $newStatus=="bad")){
+                    $subject = 'Eine Ihrer Pflanzen benoetigt fuersorge!';
+                
+                    $hum = $dataSet['humidity'];
+                    $temp =  $dataSet['temperature'];
+                    $light = $dataSet['light'];
+            
+                    $text = getEmailBody(getHumidityStatus($hum), getLightStatus($light), getTemperatureStatus($temp),getName($dataSet["mac"]));
+                    sendEmails($subject, $text);
+            
+                    echo $text;
+                    changeLastSendDate($dataSet["mac"], $currentTime->format('Y-m-d H:i:s'));
+                }
+            } 
         }
     }
 
-    function getEmailBody($hum, $light, $temp){
+    function getEmailBody($hum, $light, $temp, $name){
         $text = 'Bitte kuemmern Sie sich um Ihre Pflanze Sie hat ';
         if($hum){
             $text = $text . 'zu wenig Wasser';
@@ -39,7 +44,8 @@
             }
             $text = $text . 'eine zu niedrige Temperatur';
         }
-        $text = $text . '!';
+        $text = $text . "!\n";
+        $text = $text . 'Pflanze: ' . $name;
         return $text;
     }
 

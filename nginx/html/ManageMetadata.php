@@ -17,7 +17,7 @@ function addMetadataEntry($mac){
 
         $metadata[$index]["mac"] = $mac;
         $metadata[$index]["name"] = $mac;
-        $metadata[$index]["status"] = "good";
+        $metadata[$index]["status"] = "bad";
         $metadata[$index]["last-sent"] = "1970-01-01 00:00:00";
         
         file_put_contents("metadata.json", json_encode($metadata));
